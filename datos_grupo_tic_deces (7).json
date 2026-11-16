@@ -13,19 +13,28 @@
       "Ampliación de ancho de banda en estaciones con enlace satelital",
       "Mantenimiento correctivo de repetidoras fuera de servicio",
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
-      "Adquisición de destructoras de papel"
+      "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-15T02:07:54.281Z",
+    "guardado": "2026-11-16T05:25:40.889Z",
     "titulos": {
       "personal": {
-        "sub": "",
+        "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
         "titulo": "Personal Grupo TIC DECES"
       },
       "radios": {
-        "sub": "1.167 equipos · 6 Sitios de repetición · 13 Repetidores de canales urbanos"
+        "sub": "1.166 equipos · 6 Sitios de repetición · 13 Repetidores de canales urbanos"
       },
       "servicios": {
         "sub": ""
+      },
+      "capacidades": {
+        "sub": ""
+      },
+      "indicadores": {
+        "sub": "5 indicadores de procesos  ·  1 Herramienta de seguimiento"
+      },
+      "elementos": {
+        "sub": "813 elementos ·  77,61% operativos"
       }
     },
     "secciones": {
@@ -52,8 +61,29 @@
     },
     "textos": {
       "h3_radrep": "Sitios de repetición",
-      "h3_radeq": "Equipos de radio"
-    }
+      "h3_radeq": "Equipos de radio",
+      "consol_tit_biodisp": "Consolidado de captores biométricos por estación, subestación y CAI",
+      "nota_bio": "Cada círculo del mapa muestra el total de captores del municipio, calculado automáticamente desde el consolidado.",
+      "nota_pda": "Cada círculo del mapa muestra el total de dispositivos del municipio, calculado automáticamente desde el consolidado (las subestaciones y CAI se suman a su municipio).",
+      "consol_disp_biodisp": "Cantidad",
+      "th_ipads_serie": "Imei",
+      "cctv_nota": "Nota: actualmente el Departamento de Policía Cesar (DECES) no cuenta con línea de emergencia 123; la existente pertenece a la Policía Metropolitana de Valledupar (MEVAP).",
+      "cctv_btn_gest": "Gestiones"
+    },
+    "custom": {},
+    "orden": [
+      "personal",
+      "indicadores",
+      "capacidades",
+      "servicios",
+      "cctv",
+      "radios",
+      "elementos",
+      "resumen"
+    ],
+    "ocultas": [
+      "conectividad"
+    ]
   },
   "personal": [
     {
@@ -427,8 +457,45 @@
         "Tecnólogo en Telecomunicaciones"
       ],
       "logros": [],
-      "actividades": [],
-      "ingreso": "",
+      "actividades": [
+        {
+          "fecha": "",
+          "titulo": "",
+          "detalle": "Ejecutar protocolos de seguridad y privacidad de la información en la unidad, asegurando la disponibilidad, confidencialidad e integridad tecnológica de la Policía Nacional.",
+          "estado": ""
+        },
+        {
+          "fecha": "",
+          "titulo": "",
+          "detalle": "Realizar inventario, levantamiento de activos de información de la unidad, análisis de riesgos y adelantar planes de tratamiento de incidentes, con el propósito de actualizar los niveles de seguridad.",
+          "estado": ""
+        },
+        {
+          "fecha": "",
+          "titulo": "",
+          "detalle": "Desarrollar seguimiento al cumplimiento de los controles de seguridad informática implementados en las diferentes unidades policiales con el propósito de garantizar la confidencialidad, integridad y disponibilidad de la Información.",
+          "estado": ""
+        },
+        {
+          "fecha": "",
+          "titulo": "",
+          "detalle": "Ejecutar y actualizar el plan de continuidad de la información de la unidad, con el propósito de responder ante cualquier evento o incidente que interrumpa la operación de los servicios de la Policía Nacional.",
+          "estado": ""
+        },
+        {
+          "fecha": "",
+          "titulo": "",
+          "detalle": "Realizar la atención de los eventos e incidentes de seguridad Informática, con el propósito de evitar mantener la continuidad de los servicios de la Policía Nacional.",
+          "estado": ""
+        },
+        {
+          "fecha": "",
+          "titulo": "",
+          "detalle": "Brindar la información que corresponda de acuerdo a la naturaleza del cargo, a quien la requiera, siguiendo los lineamientos de la normativa establecida.",
+          "estado": ""
+        }
+      ],
+      "ingreso": "2024-09-10",
       "correo": "stevenj.rdiaz@correo.policia.gov.co",
       "extension": "deces.gutic@policia.gov.co",
       "jefe": false
@@ -512,38 +579,45 @@
     "radios": [
       {
         "tipo": "Radio portátil",
-        "cantidad": 1061,
-        "operativos": 647,
-        "mantenimiento": 0,
-        "baja": 414
+        "cantidad": 1055,
+        "operativos": 634,
+        "mantenimiento": 123,
+        "baja": 298
       },
       {
         "tipo": "Radio base",
-        "cantidad": 59,
-        "operativos": 33,
-        "mantenimiento": 0,
-        "baja": 26
+        "cantidad": 56,
+        "operativos": 27,
+        "mantenimiento": 14,
+        "baja": 15
       },
       {
         "tipo": "Repetidores",
-        "cantidad": 17,
-        "operativos": 13,
-        "mantenimiento": 0,
-        "baja": 4
+        "cantidad": 19,
+        "operativos": 14,
+        "mantenimiento": 2,
+        "baja": 3
       },
       {
         "tipo": "UPS",
-        "cantidad": 18,
-        "operativos": 16,
+        "cantidad": 17,
+        "operativos": 15,
         "mantenimiento": 0,
         "baja": 2
       },
       {
         "tipo": "Plantas eléctricas",
         "cantidad": 12,
+        "operativos": 12,
+        "mantenimiento": 0,
+        "baja": 0
+      },
+      {
+        "tipo": "Back to back",
+        "cantidad": 7,
         "operativos": 7,
         "mantenimiento": 0,
-        "baja": 5
+        "baja": 0
       }
     ],
     "repetidoras": [
@@ -586,84 +660,89 @@
     ],
     "elementos": [
       {
-        "categoria": "Computador de escritorio",
-        "cantidad": 310,
-        "operativos": 262,
-        "mantenimiento": 30,
-        "baja": 18,
-        "obs": "38% con más de 5 años"
+        "categoria": "Cámara corporal",
+        "operativos": 1,
+        "fuera": 12
+      },
+      {
+        "categoria": "Cámara de video",
+        "operativos": 15,
+        "fuera": 3
+      },
+      {
+        "categoria": "Central de comunicaciones",
+        "operativos": 1,
+        "fuera": 0
+      },
+      {
+        "categoria": "Computador",
+        "operativos": 369,
+        "fuera": 95
       },
       {
         "categoria": "Computador portátil",
-        "cantidad": 85,
-        "operativos": 76,
-        "mantenimiento": 6,
-        "baja": 3,
-        "obs": ""
+        "operativos": 49,
+        "fuera": 40
       },
       {
-        "categoria": "Impresora / multifuncional",
-        "cantidad": 120,
-        "operativos": 98,
-        "mantenimiento": 15,
-        "baja": 7,
-        "obs": "Falta de tóner en 12 unidades"
+        "categoria": "Equipo móvil morphorapid",
+        "operativos": 2,
+        "fuera": 1
       },
       {
-        "categoria": "Escáner",
-        "cantidad": 25,
-        "operativos": 22,
-        "mantenimiento": 2,
-        "baja": 1,
-        "obs": ""
+        "categoria": "Impresora",
+        "operativos": 100,
+        "fuera": 18
+      },
+      {
+        "categoria": "Inhibidor de frecuencias",
+        "operativos": 1,
+        "fuera": 1
+      },
+      {
+        "categoria": "Kvl",
+        "operativos": 1,
+        "fuera": 0
+      },
+      {
+        "categoria": "Pantalla táctil",
+        "operativos": 2,
+        "fuera": 0
+      },
+      {
+        "categoria": "Scanner",
+        "operativos": 20,
+        "fuera": 6
       },
       {
         "categoria": "Servidor",
-        "cantidad": 6,
-        "operativos": 6,
-        "mantenimiento": 0,
-        "baja": 0,
-        "obs": ""
+        "operativos": 3,
+        "fuera": 0
       },
       {
-        "categoria": "Switch / router",
-        "cantidad": 70,
-        "operativos": 66,
-        "mantenimiento": 3,
-        "baja": 1,
-        "obs": ""
+        "categoria": "Sistema aéreo remotamente tripulado",
+        "operativos": 2,
+        "fuera": 1
       },
       {
-        "categoria": "UPS",
-        "cantidad": 60,
-        "operativos": 44,
-        "mantenimiento": 10,
-        "baja": 6,
-        "obs": "Baterías por cambiar"
+        "categoria": "Switch",
+        "operativos": 39,
+        "fuera": 3
       },
       {
-        "categoria": "Videobeam / pantalla",
-        "cantidad": 18,
-        "operativos": 16,
-        "mantenimiento": 2,
-        "baja": 0,
-        "obs": ""
+        "categoria": "Video beam",
+        "operativos": 24,
+        "fuera": 2
       },
       {
-        "categoria": "Cámara de videovigilancia",
-        "cantidad": 140,
-        "operativos": 118,
-        "mantenimiento": 15,
-        "baja": 7,
-        "obs": ""
+        "categoria": "Video wall",
+        "operativos": 1,
+        "fuera": 0
       },
       {
-        "categoria": "Tablet / dispositivo móvil",
-        "cantidad": 40,
-        "operativos": 37,
-        "mantenimiento": 2,
-        "baja": 1,
-        "obs": ""
+        "categoria": "Workstation",
+        "operativos": 1,
+        "fuera": 0
       }
     ],
     "servicios": [
@@ -694,102 +773,160 @@
     ],
     "cctv": [
       {
-        "componente": "Cámaras PTZ",
-        "detalle": "Cámaras domo con movimiento y zoom."
+        "municipio": "Aguachica",
+        "servicio": 0,
+        "fservicio": 104
       },
       {
-        "componente": "Cámaras fijas",
-        "detalle": "Puntos fijos en vías y sitios críticos."
+        "municipio": "Bosconia",
+        "servicio": 0,
+        "fservicio": 55
       },
       {
-        "componente": "Centro de monitoreo",
-        "detalle": "Sala de monitoreo y análisis de video."
+        "municipio": "Curumaní",
+        "servicio": 0,
+        "fservicio": 54
       },
       {
-        "componente": "Grabación (NVR)",
-        "detalle": "Almacenamiento y grabación de video."
+        "municipio": "La Gloria",
+        "servicio": 8,
+        "fservicio": 0
       },
       {
-        "componente": "Analítica de video",
-        "detalle": "Detección y análisis automático."
+        "municipio": "La Jagua de Ibirico",
+        "servicio": 0,
+        "fservicio": 56
       },
       {
-        "componente": "Puntos de videovigilancia",
-        "detalle": "Puntos instalados en el municipio."
+        "municipio": "Pelaya",
+        "servicio": 0,
+        "fservicio": 44
+      },
+      {
+        "municipio": "San Alberto",
+        "servicio": 16,
+        "fservicio": 0
       }
     ],
     "ipads": [
       {
-        "modelo": "iPad 9ª gen.",
-        "serie": "DMP...001",
-        "dependencia": "Comando DECES"
+        "linea": "3102218590",
+        "simcard": "57101702608222326",
+        "operador": "CLARO",
+        "identificacion": "91505880",
+        "cargo": "COMANDANTE DEPARTAMENTO DE POLICIA",
+        "imei": "358705113350286",
+        "modelo": "IPAD PRO 12,9'"
       },
       {
-        "modelo": "iPad Air",
-        "serie": "DMP...002",
-        "dependencia": "Grupo TIC"
+        "linea": "9101103514",
+        "simcard": "8957123112214786707",
+        "operador": "MOVISTAR",
+        "identificacion": "91505880",
+        "cargo": "SUBCOMANDANTE DEPARTAMENTO DE POLICIA",
+        "imei": "356899855080672",
+        "modelo": "IPAD PRO 12,9'"
+      },
+      {
+        "linea": "9101094139",
+        "simcard": "8957123112214792911",
+        "operador": "MOVISTAR",
+        "identificacion": "80097353",
+        "cargo": "COMANDANTE OPERATIVO",
+        "imei": "358718093523533",
+        "modelo": "IPAD PRO 12,9'"
       }
     ],
     "lineas": [
       {
-        "numero": "300 000 0001",
-        "dependencia": "Comando DECES"
+        "dependencia": "SECCIONAL DE INVESTIGACIÓN CRIMINAL DECES",
+        "numero": "3104771829",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "300 000 0002",
-        "dependencia": "Grupo TIC"
+        "dependencia": "SECRETARIA PRIVADA",
+        "numero": "3213943995",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "300 000 0003",
-        "dependencia": "SIJIN"
+        "dependencia": "JEFE COMUNICACIONES ESTRATEGICAS",
+        "numero": "3213943691",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "COMANDANTE DISTRITO DE POLICÍA CURUMANI",
+        "numero": "3213944089",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "COMANDANTE DISTRITO DE POLICÍA AGUACHICA",
+        "numero": "3213944044",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "COMANDANTE DE DEPARTAMENTO",
+        "numero": "3203131729",
+        "datos": 80,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "SUBCOMANDANTE DE DEPARTAMENTO",
+        "numero": "3202953706",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "JEFE ASUNTOS JURIDICOS",
+        "numero": "3213944034",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "JEFE OFICINA DE ATENCIÓN AL CIUDADANO",
+        "numero": "3222659711",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "JEFE ÁREA ADMINISTRATIVA, LOGISTICA Y FINANCIERA",
+        "numero": "3213944065",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "COMANDANTE DISTRITO DE POLICÍA BOSCONIA",
+        "numero": "3213944015",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "COMANDANTE OPERATIVO",
+        "numero": "3203037935",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "JEFE GRUPO DE TALENTO HUMANO",
+        "numero": "3213944050",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "JEFE CENTRO AUTOMATICO DE DESPACHO",
+        "numero": "3203055618",
+        "datos": 60,
+        "voz": 1000
       },
       {
-        "numero": "—",
-        "dependencia": "—"
+        "dependencia": "JEFE GRUPO DE TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES",
+        "numero": "3203000819",
+        "datos": 60,
+        "voz": 1000
       }
     ],
     "satelitales": [
@@ -805,6 +942,210 @@
       {
         "unidad": "Fuerte de Carabineros"
       }
+    ],
+    "pdadisp": [
+      {
+        "sitio": "CAI José María Campo Serrano – Aguachica",
+        "disp": 15
+      },
+      {
+        "sitio": "CAI San Pedro – Aguachica",
+        "disp": 12
+      },
+      {
+        "sitio": "Estación Gamarra",
+        "disp": 4
+      },
+      {
+        "sitio": "Subestación Puerto Mosquito",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación La Gloria",
+        "disp": 3
+      },
+      {
+        "sitio": "Estación San Alberto",
+        "disp": 6
+      },
+      {
+        "sitio": "Estación San Martín",
+        "disp": 6
+      },
+      {
+        "sitio": "Estación Río de Oro",
+        "disp": 3
+      },
+      {
+        "sitio": "Subestación Los Ángeles",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Bosconia",
+        "disp": 9
+      },
+      {
+        "sitio": "Estación El Copey",
+        "disp": 5
+      },
+      {
+        "sitio": "Subestación Chimila",
+        "disp": 2
+      },
+      {
+        "sitio": "Subestación Caracolicito",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Chimichagua",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Astrea",
+        "disp": 2
+      },
+      {
+        "sitio": "Subestación Arjona",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación El Paso",
+        "disp": 2
+      },
+      {
+        "sitio": "Subestación La Loma",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Curumaní",
+        "disp": 6
+      },
+      {
+        "sitio": "Subestación San Roque",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Pelaya",
+        "disp": 6
+      },
+      {
+        "sitio": "Estación Tamalameque",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Pailitas",
+        "disp": 6
+      },
+      {
+        "sitio": "Subestación El Burro",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación Chiriguaná",
+        "disp": 3
+      },
+      {
+        "sitio": "Estación Becerril",
+        "disp": 3
+      },
+      {
+        "sitio": "Estación La Jagua de Ibirico",
+        "disp": 6
+      }
+    ],
+    "biodisp": [
+      {
+        "sitio": "CAI San Pedro",
+        "disp": 4
+      },
+      {
+        "sitio": "CAI José María Campo Serrano",
+        "disp": 5
+      },
+      {
+        "sitio": "Estación de Policía Gamarra",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía La Gloria",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía San Alberto",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía San Martín",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Río de Oro",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Bosconia",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación de Policía El Copey",
+        "disp": 2
+      },
+      {
+        "sitio": "Subestación de Policía Chimila",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Chimichagua",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Astrea",
+        "disp": 1
+      },
+      {
+        "sitio": "Subestación de Policía Arjona",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía El Paso",
+        "disp": 1
+      },
+      {
+        "sitio": "Subestación de Policía La Loma",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Curumaní",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación de Policía Pelaya",
+        "disp": 2
+      },
+      {
+        "sitio": "Estación de Policía Tamalameque",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Pailitas",
+        "disp": 2
+      },
+      {
+        "sitio": "Subestación de Policía El Burro",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Chiriguaná",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía Becerril",
+        "disp": 1
+      },
+      {
+        "sitio": "Estación de Policía La Jagua de Ibirico",
+        "disp": 1
+      }
     ]
   },
   "caps": {
@@ -817,7 +1158,8 @@
       "Asistente Digital Personal",
       "iPad",
       "Líneas celulares",
-      "Canales de datos"
+      "Canales de datos",
+      "Captores biométricos"
     ],
     "elementos": [
       "Computadores",
@@ -840,6 +1182,498 @@
   },
   "pda": {
     "el copey": 3,
-    "bosconia": 2
-  }
+    "bosconia": 2,
+    "aguachica": 27,
+    "gamarra": 4
+  },
+  "canalesDist": {
+    "ded": [
+      17,
+      0
+    ],
+    "adsl": [
+      7,
+      0
+    ],
+    "modem": [
+      10,
+      0
+    ],
+    "sat": [
+      4,
+      0
+    ]
+  },
+  "canales": [
+    {
+      "u": "Comando de Departamento de Policía Cesar",
+      "c": "ded",
+      "mun": "Valledupar"
+    },
+    {
+      "u": "UBICAR San José de Oriente",
+      "c": "ded",
+      "mun": "La Paz"
+    },
+    {
+      "u": "Estación de Policía El Copey",
+      "c": "ded",
+      "mun": "El Copey"
+    },
+    {
+      "u": "Estación de Policía Bosconia",
+      "c": "ded",
+      "mun": "Bosconia"
+    },
+    {
+      "u": "Estación de Policía Becerril",
+      "c": "ded",
+      "mun": "Becerril"
+    },
+    {
+      "u": "Estación de Policía La Jagua de Ibirico",
+      "c": "ded",
+      "mun": "La Jagua de Ibirico"
+    },
+    {
+      "u": "Estación de Policía Astrea",
+      "c": "ded",
+      "mun": "Astrea"
+    },
+    {
+      "u": "Estación de Policía Chiriguaná",
+      "c": "ded",
+      "mun": "Chiriguaná"
+    },
+    {
+      "u": "Estación de Policía Curumaní",
+      "c": "ded",
+      "mun": "Curumaní"
+    },
+    {
+      "u": "Estación de Policía Pailitas",
+      "c": "ded",
+      "mun": "Pailitas"
+    },
+    {
+      "u": "Estación de Policía Pelaya",
+      "c": "ded",
+      "mun": "Pelaya"
+    },
+    {
+      "u": "Estación de Policía Aguachica",
+      "c": "ded",
+      "mun": "Aguachica"
+    },
+    {
+      "u": "Estación de Policía San Martín",
+      "c": "ded",
+      "mun": "San Martín"
+    },
+    {
+      "u": "Estación de Policía San Alberto",
+      "c": "ded",
+      "mun": "San Alberto"
+    },
+    {
+      "u": "Estación de Policía Chimichagua",
+      "c": "ded",
+      "mun": "Chimichagua"
+    },
+    {
+      "u": "Estación de Policía Gamarra",
+      "c": "adsl",
+      "mun": "Gamarra"
+    },
+    {
+      "u": "Estación de Policía El Paso",
+      "c": "adsl",
+      "mun": "El Paso"
+    },
+    {
+      "u": "Estación de Policía Loma de González",
+      "c": "adsl",
+      "mun": "González"
+    },
+    {
+      "u": "Estación de Policía Río de Oro",
+      "c": "adsl",
+      "mun": "Río de Oro"
+    },
+    {
+      "u": "CAI San Pedro",
+      "c": "adsl",
+      "mun": "Aguachica"
+    },
+    {
+      "u": "Estación de Policía La Gloria",
+      "c": "adsl",
+      "mun": "La Gloria"
+    },
+    {
+      "u": "Comando de Departamento de Policía Cesar",
+      "c": "modem",
+      "mun": "Valledupar",
+      "n": 2
+    },
+    {
+      "u": "Estación de Policía Tamalameque",
+      "c": "modem",
+      "mun": "Tamalameque"
+    },
+    {
+      "u": "Subestación de Policía Arjona",
+      "c": "modem",
+      "mun": "El Paso"
+    },
+    {
+      "u": "Subestación de Policía La Loma",
+      "c": "modem",
+      "mun": "El Paso"
+    },
+    {
+      "u": "Subestación de Policía San Roque",
+      "c": "modem",
+      "mun": "Curumani"
+    },
+    {
+      "u": "Subestación de Policía El Burro",
+      "c": "modem",
+      "mun": "Pailitas"
+    },
+    {
+      "u": "Subestación de Policía Chimila",
+      "c": "modem",
+      "mun": "El Copey"
+    },
+    {
+      "u": "Fuerte de Carabineros de Bosconia",
+      "c": "sat",
+      "mun": "Bosconia"
+    },
+    {
+      "u": "Subestación de Policía Las Vegas",
+      "c": "sat",
+      "mun": "Chimichagua"
+    },
+    {
+      "u": "Subestación de Policía Los Ángeles",
+      "c": "sat",
+      "mun": "Aguachica"
+    },
+    {
+      "u": "Subestación de Policía Puerto Mosquito",
+      "c": "sat",
+      "mun": "Gamarra"
+    },
+    {
+      "u": "ESMAD",
+      "c": "ded",
+      "mun": "Valledupar"
+    },
+    {
+      "u": "Unidad Prestadora de Salud Cesar",
+      "c": "ded",
+      "mun": "Valledupar"
+    },
+    {
+      "u": "Subestación de Policía Caracolicito",
+      "c": "modem",
+      "mun": "El Copey"
+    },
+    {
+      "u": "POLFA",
+      "c": "modem",
+      "mun": "Valledupar"
+    },
+    {
+      "u": "CAI Campo Serrano",
+      "c": "adsl",
+      "mun": "Aguachica"
+    }
+  ],
+  "indicadores": [
+    {
+      "n": "Actualización SINVE",
+      "meta": 100,
+      "actual": null,
+      "criterio": "",
+      "barras": [
+        {
+          "e": "T1",
+          "v": 97.09
+        },
+        {
+          "e": "T2",
+          "v": 100
+        },
+        {
+          "e": "T3",
+          "v": 97.41
+        },
+        {
+          "e": "T4",
+          "v": null
+        }
+      ],
+      "periodicidad": "trimestral",
+      "formula": "¿La unidad cumple con el criterio?",
+      "criterios": [
+        {
+          "t": "crit",
+          "c": "C1. Verificar y garantizar que los elementos del componente tecnológico (Hardware y Software) registrados en el sistema SAP-SILOG, se encuentren registrados y activos en el sistema SINVE.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C2. Verificar y garantizar que la unidad policial donde figuran registrados los bienes de SINVE y SAP-SILOG sea la misma.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C3. Verificar y garantizar que los bienes tecnológicos definidos por OFTIC con marca y modelo obligatorios cuenten con información actualizada en el SINVE, conforme a los estándares de identificación y trazabilidad establecidos para la gestión de activos.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C4. Verificar y garantizar que las dependencias donde están los bienes se encuentren vigentes en SIATH.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C5. Verificar y garantizar que los funcionarios responsables de los bienes en SAP-SILOG se encuentren administrativamente en servicio activo.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C6. Verificar y garantizar que no se tengan elementos asignados a jefes de centro de costo con las siguientes novedades administrativas:",
+          "p": 20,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.1. Funcionarios en comisión de estudios, deportiva y/o en el exterior que sea superior a 15 días.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.2. Funcionarios que se encuentren desaparecidos, evadidos, secuestrados, en presunción de desaparición, en presunción de secuestro, detenidos y/o prisionero.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.3. Funcionarios con incapacidad total y/o con hospitalización superior a 15 días.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.4. Funcionarios con licencia Especial, Por Aborto, Por maternidad, Sin derecho a sueldo; adicionalmente no tener elementos asignados a funcionarios con prórroga de licencia sin derecho a sueldo o prórroga de licencia ordinaria sin sueldo.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.5. Funcionarios con Licencia Remunerada superior a 15 días.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.6. Funcionarios que se encuentren en separación temporal.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.7. Funcionarios con suspensión Disciplinaria, Provisional, Temporal y Penal.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.8. Funcionarios que ya no laboran en la unidad.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.9. Funcionarios que al momento de la asignación estaban en una dependencia y fueron trasladados internamente en la unidad.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "6.10. Funcionarios que se encuentren en vacaciones con un tiempo superior a 15 días.",
+          "p": 2,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C7. Verificar y garantizar que no existan bienes tecnológicos registrados en SINVE que se encuentren sin asignación a un funcionario responsable (activo).",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C8. Verificar y garantizar que el 100% de los bienes tecnológicos de cada dependencia se encuentren asignados por el administrador al jefe de centro de costo: garantizar que los bienes de cada dependencia en SINVE sean asignados por el funcionario con rol de administrador a un solo funcionario (jefe centro de costo 1LF-PR-0015); y que ninguna asignación supere un (1) año de antigüedad sin justificación documentada y válida (reporte de extravío o apertura de investigación por daño), conforme al procedimiento de gestión de activos.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "C9. Verificar y garantizar que el porcentaje de bienes tecnológicos en estado \"Fuera de Servicio\" y \"Disponible\" no exceda el 3% del total de activos registrados en la unidad.",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        }
+      ]
+    },
+    {
+      "n": "Gestión de ticket SIGMA de TIC",
+      "meta": 100,
+      "actual": null,
+      "criterio": "Defina aquí los criterios de evaluación del indicador (rangos y metas cargados en la Suite Visión Empresarial).",
+      "barras": [
+        {
+          "e": "T1",
+          "v": 99.8
+        },
+        {
+          "e": "T2",
+          "v": 100
+        },
+        {
+          "e": "T3",
+          "v": 99.54
+        },
+        {
+          "e": "T4",
+          "v": null
+        }
+      ],
+      "periodicidad": "trimestral"
+    },
+    {
+      "n": "Gestión de la disposición final de elementos RAEE",
+      "meta": 100,
+      "actual": null,
+      "criterio": "Defina aquí los criterios de evaluación del indicador (rangos y metas cargados en la Suite Visión Empresarial).",
+      "barras": [
+        {
+          "e": "S1",
+          "v": 100
+        },
+        {
+          "e": "S2",
+          "v": null
+        }
+      ],
+      "periodicidad": "semestral"
+    },
+    {
+      "n": "Disponibilidad de líneas de telefonía móvil al servicio de Policía",
+      "meta": 100,
+      "actual": null,
+      "criterio": "Defina aquí los criterios de evaluación del indicador (rangos y metas cargados en la Suite Visión Empresarial).",
+      "barras": [
+        {
+          "e": "T1",
+          "v": 99.3
+        },
+        {
+          "e": "T2",
+          "v": 90.74
+        },
+        {
+          "e": "T3",
+          "v": 100
+        },
+        {
+          "e": "T4",
+          "v": null
+        }
+      ],
+      "periodicidad": "trimestral"
+    },
+    {
+      "n": "Implementación Sistema de Gestión de Seguridad de la Información",
+      "meta": 100,
+      "actual": null,
+      "criterio": "Defina aquí los criterios de evaluación del indicador (rangos y metas cargados en la Suite Visión Empresarial).",
+      "barras": [
+        {
+          "e": "S1",
+          "v": 100
+        },
+        {
+          "e": "S2",
+          "v": null
+        }
+      ],
+      "periodicidad": "semestral"
+    },
+    {
+      "n": "H.S Nivel de aseguramiento de la Red de Radio DECES",
+      "meta": 100,
+      "actual": null,
+      "criterio": "",
+      "barras": [
+        {
+          "e": "S1",
+          "v": 100
+        },
+        {
+          "e": "S2",
+          "v": null
+        }
+      ],
+      "periodicidad": "semestral"
+    }
+  ],
+  "gestionesCCTV": [
+    {
+      "proyecto": "Ampliación de cámaras de videovigilancia",
+      "municipios": "Aguachica, Bosconia, Curumaní",
+      "estado": "En curso",
+      "obs": "Instalación de nuevos puntos de CCTV."
+    },
+    {
+      "proyecto": "Mantenimiento correctivo de cámaras fuera de servicio",
+      "municipios": "La Jagua de Ibirico, Pelaya",
+      "estado": "En curso",
+      "obs": "Recuperación de equipos inoperativos."
+    },
+    {
+      "proyecto": "Integración al centro de monitoreo",
+      "municipios": "La Gloria, San Alberto",
+      "estado": "Pendiente",
+      "obs": "Enlace con la sala de video."
+    }
+  ]
 }
