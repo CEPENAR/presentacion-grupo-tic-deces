@@ -15,7 +15,7 @@
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
       "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-16T22:23:48.219Z",
+    "guardado": "2026-11-16T22:22:47.235Z",
     "titulos": {
       "personal": {
         "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
@@ -163,7 +163,32 @@
         "Gestión del Almacén TIC"
       ],
       "perfil": "Recepcionar y distribuir los elementos que ingresan al almacén de acuerdo a la normativa vigente.",
-      "formacion": [],
+      "formacion": [
+        "Tecnólogo en gestión administrativa",
+        "Técnico profesional en servicio de policía",
+        "Curso administración y control de inventarios",
+        "Curso de almacén y activos fijos en el sistema SAP ECC 6 .0",
+        "Curso gestión y educación ambiental",
+        "Curso servicio al cliente",
+        "Curso sistema de gestión de la seguridad y salud en el trabajo SG-SST",
+        "Curso gestión administrativa",
+        "Curso de telecomunicaciones",
+        "Curso derecho de autor para la industria del software",
+        "Curso fundamentos de ingeniería de software",
+        "Curso trabajador autorizado para trabajo en alturas",
+        "Curso de telecomunicaciones",
+        "Curso ciudades inteligentes",
+        "Cursos mandatorios",
+        "Diplomado en mando, dirección y actualización jurídica",
+        "Diplomado integridad y transparencia institucional en la lucha contra la",
+        "Corrupción",
+        "Diplomado derechos humanos y servicio de policía",
+        "Diplomado en seguridad ciudadana y política publica",
+        "Diplomado internacional en derechos humanos para la función policial",
+        "Diplomado en contratación estatal",
+        "Seminario taller actualización en procesos de administración de recursos",
+        "Seminario seguridad de la información"
+      ],
       "logros": [],
       "actividades": [
         {
