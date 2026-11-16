@@ -472,6 +472,7 @@ body.admin .pda-ovl{pointer-events:auto}
 .ge-pend{background:#fdecea;color:#b02a1f}
 .ge-in{width:100%;font:inherit;font-size:14px;padding:5px 7px;border:1px solid var(--linea);border-radius:6px;box-sizing:border-box;resize:vertical}
 .cctv-btns{display:flex;gap:10px;flex-wrap:wrap}
+.rad-btns{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
 .bot-wrap{position:relative;display:inline-block}
 .bot-wrap.bot-off{opacity:.4}
 body:not(.admin) .bot-wrap.bot-oculto{display:none}
@@ -1283,27 +1284,29 @@ function botOculto(k){return (D.meta.botonesOcultos||[]).includes(k)}
 function botHide(key,html){const oc=botOculto(key);
   return `<span class="bot-wrap${oc?' bot-oculto bot-off':''}">${html}<button class="bot-toggle solo-admin" data-bottoggle="${key}" title="${oc?'Mostrar este botón':'Ocultar este botón'}">${oc?'👁':'✕'}</button></span>`}
 function geEst(e){const s=sinAc(e||'');return /curso|ejecu|progres/.test(s)?'ge-curso':/final|termin|cerrad|complet/.test(s)?'ge-fin':'ge-pend'}
-function gestionesHTML(){const G=D.gestionesCCTV||[],adm=document.body.classList.contains('admin'),escA=s=>esc(s||'').replace(/"/g,'&quot;');
+const GEDATA={cctv:'gestionesCCTV',radio:'gestionesRadio'};let geTipo='cctv';
+function gestionesHTML(tipo){tipo=GEDATA[tipo]?tipo:'cctv';geTipo=tipo;const G=D[GEDATA[tipo]]||[],adm=document.body.classList.contains('admin'),escA=s=>esc(s||'').replace(/"/g,'&quot;'),titDef=tipo==='radio'?'Gestiones — Proyectos en curso de la red de radio':'Gestiones — Proyectos en curso de CCTV';
   const rows=G.length?G.map((g,i)=>adm
     ?`<tr><td><textarea class="ge-in" data-i="${i}" data-k="proyecto" rows="2">${esc(g.proyecto)}</textarea></td><td><textarea class="ge-in" data-i="${i}" data-k="municipios" rows="2">${esc(g.municipios)}</textarea></td><td><input class="ge-in" data-i="${i}" data-k="estado" value="${escA(g.estado)}"></td><td><textarea class="ge-in" data-i="${i}" data-k="obs" rows="2">${esc(g.obs)}</textarea></td><td><button class="btn peligro" data-gedel="${i}">✕</button></td></tr>`
     :`<tr><td class="ge-proy">${esc(g.proyecto)}</td><td>${esc(g.municipios)}</td><td><span class="ge-badge ${geEst(g.estado)}">${esc(g.estado)}</span></td><td class="ge-obs">${esc(g.obs)}</td></tr>`).join('')
     :`<tr><td colspan="${adm?5:4}" class="ge-vacio">Sin proyectos registrados.</td></tr>`;
-  return `<div class="ge-modal"><div class="ge-cab"><div><h3>${ET('ge_tit','Gestiones — Proyectos en curso de CCTV')}</h3><span>${ET('ge_sub','Relación de proyectos y municipios')}</span></div><button class="x" data-cerrar>×</button></div>
+  return `<div class="ge-modal"><div class="ge-cab"><div><h3>${ET('ge_tit_'+tipo,titDef)}</h3><span>${ET('ge_sub','Relación de proyectos y municipios')}</span></div><button class="x" data-cerrar>×</button></div>
    <div class="ge-cont"><table class="ge-table"><thead><tr><th>${ET('ge_h_p','Proyecto')}</th><th>${ET('ge_h_m','Municipios')}</th><th>${ET('ge_h_e','Estado')}</th><th>${ET('ge_h_o','Observación')}</th>${adm?'<th></th>':''}</tr></thead><tbody>${rows}</tbody></table>
    ${adm?'<div style="margin-top:10px"><button class="btn" data-geadd>＋ Agregar proyecto</button></div>':''}</div></div>`}
-function abrirGestiones(){abrir(gestionesHTML());celdas()}
-function camarasHTML(){const P=D.proyectoCamaras||{items:[]},I=P.items||[],adm=document.body.classList.contains('admin'),money=v=>'$ '+fmt(num(v));let sub=0;
+function abrirGestiones(tipo){abrir(gestionesHTML(tipo));celdas()}
+const PCDATA={camaras:'proyectoCamaras',radios:'proyectoRadios'};let pcTipo='camaras';
+function camarasHTML(tipo){tipo=PCDATA[tipo]?tipo:'camaras';pcTipo=tipo;const P=D[PCDATA[tipo]]||{items:[]},I=P.items||[],adm=document.body.classList.contains('admin'),money=v=>'$ '+fmt(num(v)),titDef=tipo==='radios'?'Proyecto de radios — Subsistema de radio':'Proyecto de cámaras — Subsistema CCTV',subDef=tipo==='radios'?'SUBTOTAL SUBSISTEMA DE RADIO':'SUBTOTAL SUBSISTEMA CCTV';let sub=0;
   const rows=I.map((r,i)=>{const tot=(num(r.unit)+num(r.aiu))*num(r.cant);sub+=tot;return adm
     ?`<tr><td><input class="pc-in pc-item" data-i="${i}" data-k="item" value="${esc(r.item||'')}"></td><td><textarea class="pc-in" data-i="${i}" data-k="desc" rows="2">${esc(r.desc||'')}</textarea></td><td><input class="pc-in pc-n" data-i="${i}" data-k="cant" value="${r.cant||0}"></td><td><input class="pc-in pc-n" data-i="${i}" data-k="unit" value="${r.unit||0}"></td><td><input class="pc-in pc-n" data-i="${i}" data-k="aiu" value="${r.aiu||0}"></td><td class="pc-n pc-tot">${money(tot)}</td><td><button class="btn peligro" data-pcdel="${i}">✕</button></td></tr>`
     :`<tr><td class="pc-item">${esc(r.item)}</td><td class="ge-proy">${esc(r.desc)}</td><td class="pc-n">${fmt(num(r.cant))}</td><td class="pc-n">${money(r.unit)}</td><td class="pc-n">${money(r.aiu)}</td><td class="pc-n pc-tot">${money(tot)}</td></tr>`}).join('');
   const qt=I.reduce((s,r)=>s+num(r.cant),0);
-  return `<div class="ge-modal"><div class="ge-cab"><div><h3>${ET('cam_tit','Proyecto de cámaras — Subsistema CCTV')}</h3><span>${ET('cam_sub','Detalle de cantidades y valores (COP)')}</span></div><button class="x" data-cerrar>×</button></div>
+  return `<div class="ge-modal"><div class="ge-cab"><div><h3>${ET('cam_tit_'+tipo,titDef)}</h3><span>${ET('cam_sub','Detalle de cantidades y valores (COP)')}</span></div><button class="x" data-cerrar>×</button></div>
    <div class="ge-cont"><table class="ge-table pc-table"><thead><tr><th>${ET('cam_h_i','Ítem')}</th><th>${ET('cam_h_d','Descripción')}</th><th class="pc-n">${ET('cam_h_c','Cant.')}</th><th class="pc-n">${ET('cam_h_u','Valor unitario')}</th><th class="pc-n">${ET('cam_h_a','AIU unit.')}</th><th class="pc-n">${ET('cam_h_t','Valor total')}</th>${adm?'<th></th>':''}</tr></thead><tbody>${rows}</tbody>
-   <tfoot><tr><td colspan="2">${ET('cam_subtot','SUBTOTAL SUBSISTEMA CCTV')}</td><td class="pc-n">${fmt(qt)}</td><td></td><td></td><td class="pc-n pc-tot">${money(sub)}</td>${adm?'<td></td>':''}</tr></tfoot></table>
+   <tfoot><tr><td colspan="2">${ET('cam_subtot_'+tipo,subDef)}</td><td class="pc-n">${fmt(qt)}</td><td></td><td></td><td class="pc-n pc-tot">${money(sub)}</td>${adm?'<td></td>':''}</tr></tfoot></table>
    ${adm?'<div style="margin-top:10px"><button class="btn" data-pcadd>＋ Agregar ítem</button></div>':''}</div></div>`}
-function abrirCamaras(){abrir(camarasHTML());celdas()}
+function abrirCamaras(tipo){abrir(camarasHTML(tipo));celdas()}
 function slideCCTV(){return `<div class="mini-row" style="height:100%">${mapaCCTV()}
-   <div class="mini-lado"><div class="cctv-top"><div class="cleyenda"><span><i style="background:#1f9d57"></i>${ET('cctv_leg_s','En servicio')}</span><span><i style="background:#e8920c"></i>${ET('cctv_leg_p','Parcial')}</span><span><i style="background:#d8261f"></i>${ET('cctv_leg_f','Fuera de servicio')}</span></div><div class="cctv-btns">${botHide('cctv_camaras',`<button class="btn-gestiones" data-camaras>📹 ${ET('cctv_btn_cam','Proyecto de cámaras')}</button>`)}${botHide('cctv_gestiones',`<button class="btn-gestiones" data-gestiones>🗂 ${ET('cctv_btn_gest','Gestiones')}</button>`)}</div></div>${tablaCCTV()}
+   <div class="mini-lado"><div class="cctv-top"><div class="cleyenda"><span><i style="background:#1f9d57"></i>${ET('cctv_leg_s','En servicio')}</span><span><i style="background:#e8920c"></i>${ET('cctv_leg_p','Parcial')}</span><span><i style="background:#d8261f"></i>${ET('cctv_leg_f','Fuera de servicio')}</span></div><div class="cctv-btns">${botHide('cctv_camaras',`<button class="btn-gestiones" data-camaras="camaras">📹 ${ET('cctv_btn_cam','Proyecto de cámaras')}</button>`)}${botHide('cctv_gestiones',`<button class="btn-gestiones" data-gestiones="cctv">🗂 ${ET('cctv_btn_gest','Gestiones')}</button>`)}</div></div>${tablaCCTV()}
    <div class="cctv-nota"><span class="cctv-nota-ic">⚠</span><span>${ET('cctv_nota','Nota: actualmente el Departamento de Policía Cesar (DECES) no cuenta con línea de emergencia 123; la existente pertenece a la Policía Metropolitana de Valledupar (MEVAL).')}</span></div></div></div>`}
 function panelBio(){return `<h5>${SERVIC.bio} ${ET('h5_bio','Captores biométricos — PDA nuevas por municipio')}</h5>
    <div class="mini-row">${mapaBadges(sumaPorMuni('biodisp'))}
@@ -1489,7 +1492,8 @@ function abrirMapa(){const v=$('#mapaVelo');v.innerHTML=`<div class="mapa-caja">
 function cerrarMapa(){const v=$('#mapaVelo');if(v)v.classList.remove('abierto')}
 function slideRad(){return`<div class="cols" style="grid-template-columns:780px 1fr">
   <div class="caja">${H3('h3_radeq','Equipos de radio')}${barrasEstado(D.inventario.radios,'tipo')}</div>
-  <div style="display:flex;flex-direction:column;gap:26px;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:22px;min-height:0">
+   <div class="rad-btns">${botHide('rad_camaras',`<button class="btn-gestiones" data-camaras="radios">📡 ${ET('rad_btn_cam','Proyecto radios')}</button>`)}${botHide('rad_gestiones',`<button class="btn-gestiones" data-gestiones="radio">🗂 ${ET('rad_btn_gest','Gestiones')}</button>`)}</div>
    <div class="caja compacta" style="flex:0 1 auto"><div class="caja-hd">${H3('h3_radrep','Repetidoras')}${botHide('rad_mapa',`<button class="globo-btn" data-mapa title="Abrir mapa de sitios de repetición">${globoSVG()}<span>Ver mapa</span></button>`)}</div>${tabla('repetidoras')}</div>
    <div class="caja compacta" style="flex:0 1 auto">${H3('h3_raddet','Detalle de equipos')}${tabla('radios')}</div></div></div>`}
 function barrasEle(lista){const L=[...(lista||[])].map(r=>({n:r.categoria,s:num(r.operativos),f:num(r.fuera)})).filter(x=>x.s+x.f>0).sort((a,b)=>(b.s+b.f)-(a.s+a.f));
@@ -1559,6 +1563,11 @@ function normalizar(){D=D||{};D.meta=D.meta||{};D.personal=Array.isArray(D.perso
   if(!Array.isArray(D.inventario.lineas)||!D.inventario.lineas.length||!('datos' in D.inventario.lineas[0]))D.inventario.lineas=LIN.map(r=>({dependencia:r[0],numero:r[1],datos:r[2],voz:r[3]}));
   if(!Array.isArray(D.inventario.elementos)||!D.inventario.elementos.length||!('fuera' in D.inventario.elementos[0])){const EL=[['BACK TO BACK',7,0],['CÁMARA CORPORAL',1,12],['CÁMARA DE VIDEO',15,3],['CENTRAL DE COMUNICACIONES',1,0],['COMPUTADOR',369,95],['COMPUTADOR PORTÁTIL',49,40],['EQUIPO MÓVIL MORPHORAPID',2,1],['IMPRESORA',100,18],['INHIBIDOR DE FRECUENCIAS',1,1],['KVL',1,0],['PANTALLA TÁCTIL',2,0],['SCANNER',20,6],['SERVIDOR',3,0],['SISTEMA AÉREO REMOTAMENTE TRIPULADO',2,1],['SWITCH',39,3],['VIDEO BEAM',24,2],['VIDEO WALL',1,0],['WORKSTATION',1,0]];D.inventario.elementos=EL.map(r=>({categoria:r[0],operativos:r[1],fuera:r[2]}))}
   if(!Array.isArray(D.inventario.cctv)||!D.inventario.cctv.length||!('municipio' in D.inventario.cctv[0])){const CV=[['Aguachica',0,104],['Bosconia',0,55],['Curumaní',0,54],['La Gloria',8,0],['La Jagua de Ibirico',0,56],['Pelaya',0,44],['San Alberto',16,0]];D.inventario.cctv=CV.map(r=>({municipio:r[0],servicio:r[1],fservicio:r[2]}))}
+  if(!D.proyectoRadios||!Array.isArray(D.proyectoRadios.items)){D.proyectoRadios={items:[
+    {item:'1.1',desc:'Equipos de radiocomunicación (ejemplo — reemplazar)',cant:0,unit:0,aiu:0}]}}
+  if(!Array.isArray(D.gestionesRadio)){D.gestionesRadio=[
+    {proyecto:'Modernización de la red de radiocomunicaciones',municipios:'Valledupar, Bosconia',estado:'En curso',obs:'Renovación de equipos y repetidoras.'},
+    {proyecto:'Mantenimiento de sitios de repetición',municipios:'Cerro del Alguacil, Pelaya, Río de Oro',estado:'En curso',obs:'Mantenimiento preventivo y correctivo.'}]}
   if(!D.proyectoCamaras||!Array.isArray(D.proyectoCamaras.items)){D.proyectoCamaras={items:[
     {item:'2.1',desc:'Cámaras PTZ tipo domo Tipo 2',cant:92,unit:22600000,aiu:4294000},
     {item:'2.2',desc:'Cámara tipo PTZ + accesorio panorámico multisensor',cant:50,unit:56400000,aiu:10716000},
@@ -1730,14 +1739,14 @@ document.addEventListener('click',e=>{
   const cd=e.target.closest&&e.target.closest('[data-critdel]');if(cd){const ii=+cd.dataset.critdel,ri=+cd.dataset.ri;D.indicadores[ii].criterios.splice(ri,1);guardar('Fila eliminada');selIndicador(ii)}});
 document.addEventListener('click',e=>{const bt=e.target.closest&&e.target.closest('[data-bottoggle]');if(bt){const k=bt.dataset.bottoggle;D.meta.botonesOcultos=D.meta.botonesOcultos||[];const i=D.meta.botonesOcultos.indexOf(k);if(i>=0)D.meta.botonesOcultos.splice(i,1);else D.meta.botonesOcultos.push(k);guardar(i>=0?'Botón visible':'Botón oculto');render()}});
 document.addEventListener('click',e=>{
-  const cam=e.target.closest&&e.target.closest('[data-camaras]');if(cam){abrirCamaras();return}
-  const pa=e.target.closest&&e.target.closest('[data-pcadd]');if(pa){D.proyectoCamaras.items.push({item:'',desc:'Nuevo ítem',cant:0,unit:0,aiu:0});guardar('Ítem agregado');abrirCamaras();return}
-  const pd=e.target.closest&&e.target.closest('[data-pcdel]');if(pd){D.proyectoCamaras.items.splice(+pd.dataset.pcdel,1);guardar('Ítem eliminado');abrirCamaras();return}
-  const g=e.target.closest&&e.target.closest('[data-gestiones]');if(g){abrirGestiones();return}
-  const ga=e.target.closest&&e.target.closest('[data-geadd]');if(ga){D.gestionesCCTV=D.gestionesCCTV||[];D.gestionesCCTV.push({proyecto:'Nuevo proyecto',municipios:'',estado:'En curso',obs:''});guardar('Proyecto agregado');abrirGestiones();return}
-  const gd=e.target.closest&&e.target.closest('[data-gedel]');if(gd){D.gestionesCCTV.splice(+gd.dataset.gedel,1);guardar('Proyecto eliminado');abrirGestiones();return}});
-document.addEventListener('change',e=>{const el=e.target.closest&&e.target.closest('.ge-in');if(!el)return;const i=+el.dataset.i,k=el.dataset.k;if(!D.gestionesCCTV||!D.gestionesCCTV[i])return;D.gestionesCCTV[i][k]=el.value;guardar('Gestión actualizada')});
-document.addEventListener('change',e=>{const el=e.target.closest&&e.target.closest('.pc-in');if(!el)return;const i=+el.dataset.i,k=el.dataset.k,it=D.proyectoCamaras&&D.proyectoCamaras.items[i];if(!it)return;it[k]=(k==='item'||k==='desc')?el.value:num(el.value);guardar('Proyecto actualizado');abrirCamaras()});
+  const cam=e.target.closest&&e.target.closest('[data-camaras]');if(cam){abrirCamaras(cam.dataset.camaras);return}
+  const pa=e.target.closest&&e.target.closest('[data-pcadd]');if(pa){D[PCDATA[pcTipo]].items.push({item:'',desc:'Nuevo ítem',cant:0,unit:0,aiu:0});guardar('Ítem agregado');abrirCamaras(pcTipo);return}
+  const pd=e.target.closest&&e.target.closest('[data-pcdel]');if(pd){D[PCDATA[pcTipo]].items.splice(+pd.dataset.pcdel,1);guardar('Ítem eliminado');abrirCamaras(pcTipo);return}
+  const g=e.target.closest&&e.target.closest('[data-gestiones]');if(g){abrirGestiones(g.dataset.gestiones);return}
+  const ga=e.target.closest&&e.target.closest('[data-geadd]');if(ga){D[GEDATA[geTipo]]=D[GEDATA[geTipo]]||[];D[GEDATA[geTipo]].push({proyecto:'Nuevo proyecto',municipios:'',estado:'En curso',obs:''});guardar('Proyecto agregado');abrirGestiones(geTipo);return}
+  const gd=e.target.closest&&e.target.closest('[data-gedel]');if(gd){D[GEDATA[geTipo]].splice(+gd.dataset.gedel,1);guardar('Proyecto eliminado');abrirGestiones(geTipo);return}});
+document.addEventListener('change',e=>{const el=e.target.closest&&e.target.closest('.ge-in');if(!el)return;const i=+el.dataset.i,k=el.dataset.k,L=D[GEDATA[geTipo]];if(!L||!L[i])return;L[i][k]=el.value;guardar('Gestión actualizada')});
+document.addEventListener('change',e=>{const el=e.target.closest&&e.target.closest('.pc-in');if(!el)return;const i=+el.dataset.i,k=el.dataset.k,P=D[PCDATA[pcTipo]];if(!P||!P.items[i])return;P.items[i][k]=(k==='item'||k==='desc')?el.value:num(el.value);guardar('Proyecto actualizado');abrirCamaras(pcTipo)});
 document.addEventListener('focusout',e=>{const el=e.target.closest&&e.target.closest('.ct-ced');if(!el||!document.body.classList.contains('admin'))return;
   const ii=+el.dataset.ii,ri=+el.dataset.ri,cf=el.dataset.cf,v=el.innerText.trim(),ind=D.indicadores[ii];if(!ind)return;
   if(cf==='formula'){ind.formula=v}else{if(!ind.criterios[ri])return;if(cf==='p')ind.criterios[ri].p=num(v);else ind.criterios[ri][cf]=v}
