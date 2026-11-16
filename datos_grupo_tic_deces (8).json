@@ -6,7 +6,7 @@
     "unidad": "Departamento de Policía Cesar – DECES",
     "evento": "Presentación ante el señor Comandante de Departamento",
     "lugar": "Valledupar, Cesar",
-    "fechaCorte": "2026-11-13",
+    "fechaCorte": "2026-11-17",
     "ejemplo": false,
     "necesidades": [
       "Renovación de equipos de cómputo con más de 5 años de uso",
@@ -15,7 +15,7 @@
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
       "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-16T05:25:40.889Z",
+    "guardado": "2026-11-16T18:40:36.892Z",
     "titulos": {
       "personal": {
         "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
@@ -68,7 +68,12 @@
       "consol_disp_biodisp": "Cantidad",
       "th_ipads_serie": "Imei",
       "cctv_nota": "Nota: actualmente el Departamento de Policía Cesar (DECES) no cuenta con línea de emergencia 123; la existente pertenece a la Policía Metropolitana de Valledupar (MEVAP).",
-      "cctv_btn_gest": "Gestiones"
+      "cctv_btn_gest": "Gestiones",
+      "cctv_btn_cam": "Proyecto de cámaras",
+      "cam_subtot": "SUBTOTAL SUBSISTEMA CCTV",
+      "cam_h_a": "Imp",
+      "rad_btn_gest": "Gestiones",
+      "rad_btn_cam": "Proyecto radios"
     },
     "custom": {},
     "orden": [
@@ -83,7 +88,8 @@
     ],
     "ocultas": [
       "conectividad"
-    ]
+    ],
+    "botonesOcultos": []
   },
   "personal": [
     {
@@ -1619,7 +1625,59 @@
           "v": null
         }
       ],
-      "periodicidad": "trimestral"
+      "periodicidad": "trimestral",
+      "formula": "¿La unidad cumple con el criterio?",
+      "criterios": [
+        {
+          "t": "crit",
+          "c": "LINEAS MAL INVENTARIADAS",
+          "p": 15,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "IMEI",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "IP REPORTE",
+          "p": 10,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "LINEA ABONADO",
+          "p": 15,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "SERIAL REPORTE",
+          "p": 15,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "ICCID SIM CARD",
+          "p": 15,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "NOVEDAD UNIDAD Y LABORANDO PDA",
+          "p": 20,
+          "cumple": "",
+          "obs": ""
+        }
+      ]
     },
     {
       "n": "Implementación Sistema de Gestión de Seguridad de la Información",
@@ -1658,22 +1716,74 @@
   ],
   "gestionesCCTV": [
     {
-      "proyecto": "Ampliación de cámaras de videovigilancia",
-      "municipios": "Aguachica, Bosconia, Curumaní",
-      "estado": "En curso",
-      "obs": "Instalación de nuevos puntos de CCTV."
+      "proyecto": "IMPLEMENTACIÓN Y PUESTA EN MARCHA DEL SISTEMA INTEGRADO DE COMUNICACIONES, VIGILANCIA Y RADIOCOMUNICACIÓN, MEDIANTE LA DOTACIÓN DE LOS SUBSISTEMAS SIES RADIO, CCTV, COMUNICACIÓN COMUNITARIA Y RADIOCOMUNICACIONES PARA LA POLICÍA NACIONAL Y EL EJÉRCITO NACIONAL, EN EL DEPARTAMENTO DEL CESAR POR UN VALOR DE $15.542.097.839,00 POR PARTE DE LA GOBERNACION DEL CESAR.",
+      "municipios": "Aguachica, Bosconia, Chiriguaná, Rio de Oro y El Copey",
+      "estado": "En ejecución",
+      "obs": "Actualización de e instalación de nuevos puntos de CCTV."
+    }
+  ],
+  "proyectoCamaras": {
+    "items": [
+      {
+        "item": "1",
+        "desc": "Cámaras PTZ tipo domo Tipo 2",
+        "cant": 92,
+        "unit": 22600000,
+        "aiu": 4294000
+      },
+      {
+        "item": "2",
+        "desc": "Cámara tipo PTZ + accesorio panorámico multisensor",
+        "cant": 50,
+        "unit": 56400000,
+        "aiu": 10716000
+      },
+      {
+        "item": "3",
+        "desc": "Cámaras fijas Tipo 1",
+        "cant": 260,
+        "unit": 8700000,
+        "aiu": 1653000
+      }
+    ]
+  },
+  "proyectoRadios": {
+    "items": [
+      {
+        "item": "Proyecto 1",
+        "desc": "Equipos de radiocomunicación (ejemplo — reemplazar)",
+        "cant": 10,
+        "unit": 10,
+        "aiu": 10
+      },
+      {
+        "item": "Proyecto 2",
+        "desc": "Repetidora GTR8000",
+        "cant": 5,
+        "unit": 0,
+        "aiu": 0
+      },
+      {
+        "item": "",
+        "desc": "Rectificador 48VDC CONF 2+1 módulos 83.3A",
+        "cant": 0,
+        "unit": 0,
+        "aiu": 0
+      }
+    ]
+  },
+  "gestionesRadio": [
+    {
+      "proyecto": "IMPLEMENTACIÓN Y PUESTA EN MARCHA DEL SISTEMA INTEGRADO DE COMUNICACIONES, VIGILANCIA Y RADIOCOMUNICACIÓN, MEDIANTE LA DOTACIÓN DE LOS SUBSISTEMAS SIES RADIO, CCTV, COMUNICACIÓN COMUNITARIA Y RADIOCOMUNICACIONES PARA LA POLICÍA NACIONAL Y EL EJÉRCITO NACIONAL, EN EL DEPARTAMENTO DEL CESAR POR UN VALOR DE $15.542.097.839,00 POR PARTE DE LA GOBERNACION DEL CESAR.",
+      "municipios": "Actualizar",
+      "estado": "En ejecución",
+      "obs": "Renovación de equipos y repetidoras."
     },
     {
-      "proyecto": "Mantenimiento correctivo de cámaras fuera de servicio",
-      "municipios": "La Jagua de Ibirico, Pelaya",
-      "estado": "En curso",
-      "obs": "Recuperación de equipos inoperativos."
-    },
-    {
-      "proyecto": "Integración al centro de monitoreo",
-      "municipios": "La Gloria, San Alberto",
-      "estado": "Pendiente",
-      "obs": "Enlace con la sala de video."
+      "proyecto": "FORTALECIMIENTO DEL SISTEMA INTEGRADO DE EMERGENCIA Y SEGURIDAD MEDIANTE EL AUMENTO DE LAS CAPACIDADES DE VIDEO VIGILANCIA MOVIL, RADIO COMUNICACIONES, PROTECCION DE LA INFRAESTRUCTURA DIGITAL Y TECNOLOGIA DE LA POLICIA NACIONAL, EJERCITO NACIONAL Y ARMADA NACIONAL, EN EL DEPARTAMENTO DEL CESAR, POR UN VALOR DE $ 17.530.477.310,00, POR PARTE DE LA GOBERNACION DEL CESAR.",
+      "municipios": "Actualizar",
+      "estado": "En adjudicación",
+      "obs": ""
     }
   ]
 }
