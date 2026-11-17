@@ -9,13 +9,14 @@
     "fechaCorte": "2026-11-17",
     "ejemplo": false,
     "necesidades": [
+      "Implementación de un Sistema de Emergencia y Seguridad Departamental",
       "Renovación de equipos de cómputo con más de 5 años de uso",
       "Ampliación de ancho de banda en estaciones con enlace satelital",
       "Mantenimiento correctivo de repetidoras fuera de servicio",
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
       "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-16T23:29:30.700Z",
+    "guardado": "2026-11-17T02:34:07.483Z",
     "titulos": {
       "personal": {
         "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
@@ -89,7 +90,8 @@
     "ocultas": [
       "conectividad"
     ],
-    "botonesOcultos": []
+    "botonesOcultos": [],
+    "propio": true
   },
   "personal": [
     {
