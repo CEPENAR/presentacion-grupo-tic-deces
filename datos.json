@@ -16,7 +16,7 @@
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
       "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-17T02:34:07.483Z",
+    "guardado": "2026-11-17T15:23:38.984Z",
     "titulos": {
       "personal": {
         "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
@@ -72,9 +72,10 @@
       "cctv_btn_gest": "Gestiones",
       "cctv_btn_cam": "Proyecto de cámaras",
       "cam_subtot": "SUBTOTAL SUBSISTEMA CCTV",
-      "cam_h_a": "Imp",
+      "cam_h_a": "IVA",
       "rad_btn_gest": "Gestiones",
-      "rad_btn_cam": "Proyecto radios"
+      "rad_btn_cam": "Proyecto radios",
+      "h5_bio": "Captores biométricos — PDA nuevas por municipio"
     },
     "custom": {},
     "orden": [
@@ -613,22 +614,22 @@
         "tipo": "Radio portátil",
         "cantidad": 1055,
         "operativos": 634,
-        "mantenimiento": 123,
-        "baja": 298
+        "mantenimiento": 0,
+        "baja": 441
       },
       {
         "tipo": "Radio base",
         "cantidad": 56,
-        "operativos": 27,
-        "mantenimiento": 14,
-        "baja": 15
+        "operativos": 32,
+        "mantenimiento": 0,
+        "baja": 24
       },
       {
         "tipo": "Repetidores",
         "cantidad": 19,
         "operativos": 14,
-        "mantenimiento": 2,
-        "baja": 3
+        "mantenimiento": 0,
+        "baja": 5
       },
       {
         "tipo": "UPS",
@@ -1083,6 +1084,10 @@
       {
         "sitio": "Estación La Jagua de Ibirico",
         "disp": 6
+      },
+      {
+        "sitio": "Valledupar",
+        "disp": 16
       }
     ],
     "biodisp": [
@@ -1609,7 +1614,17 @@
           "v": null
         }
       ],
-      "periodicidad": "trimestral"
+      "periodicidad": "trimestral",
+      "formula": "¿La unidad cumple con el criterio?",
+      "criterios": [
+        {
+          "t": "crit",
+          "c": "Tickets gestionados en los tiempos de respuesta establecidos + Tickets gestionados con\nexoneración) / (Total tickets gestionados en el trimestre) * 100",
+          "p": 100,
+          "cumple": "",
+          "obs": ""
+        }
+      ]
     },
     {
       "n": "Gestión de la disposición final de elementos RAEE",
@@ -1626,7 +1641,17 @@
           "v": null
         }
       ],
-      "periodicidad": "semestral"
+      "periodicidad": "semestral",
+      "formula": "¿La unidad cumple con el criterio?",
+      "criterios": [
+        {
+          "t": "crit",
+          "c": "Número de bienes inservibles entregados a la empresa gestora ambiental dispuesta para tal fin / Total de número de bienes registrados en el sistema SINVE con el estado de PENDIENTES PARA BAJA) * 100",
+          "p": 100,
+          "cumple": "",
+          "obs": ""
+        }
+      ]
     },
     {
       "n": "Disponibilidad de líneas de telefonía móvil al servicio de Policía",
@@ -1656,50 +1681,8 @@
       "criterios": [
         {
           "t": "crit",
-          "c": "LINEAS MAL INVENTARIADAS",
-          "p": 15,
-          "cumple": "",
-          "obs": ""
-        },
-        {
-          "t": "crit",
-          "c": "IMEI",
-          "p": 10,
-          "cumple": "",
-          "obs": ""
-        },
-        {
-          "t": "crit",
-          "c": "IP REPORTE",
-          "p": 10,
-          "cumple": "",
-          "obs": ""
-        },
-        {
-          "t": "crit",
-          "c": "LINEA ABONADO",
-          "p": 15,
-          "cumple": "",
-          "obs": ""
-        },
-        {
-          "t": "crit",
-          "c": "SERIAL REPORTE",
-          "p": 15,
-          "cumple": "",
-          "obs": ""
-        },
-        {
-          "t": "crit",
-          "c": "ICCID SIM CARD",
-          "p": 15,
-          "cumple": "",
-          "obs": ""
-        },
-        {
-          "t": "crit",
-          "c": "NOVEDAD UNIDAD Y LABORANDO PDA",
-          "p": 20,
+          "c": "(Número de líneas en SISTEL - Líneas mal inventariadas – Líneas con Novedades - Consumo de líneas) / (Número total de líneas asignadas a la unidad) *100",
+          "p": 100,
           "cumple": "",
           "obs": ""
         }
@@ -1720,7 +1703,178 @@
           "v": null
         }
       ],
-      "periodicidad": "semestral"
+      "periodicidad": "semestral",
+      "formula": "¿La unidad cumple con el criterio?",
+      "criterios": [
+        {
+          "t": "grupo",
+          "c": "C1. Identificación, actualización y valoración de los activos de información.",
+          "p": 12,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Primer semestre: Realizar inventario de activos de información de la unidad.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Segundo semestre: Presentar el inventario de activos de información ante el Comité Interno de Seguridad de la Información.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C2. Tratamiento de los incidentes de seguridad de la información que afectan los activos de información",
+          "p": 12,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Primer y segundo semestre: Reporte de incidentes de seguridad de la información ocurridos en la unidad ante el Comité Interno de Seguridad de la Información adjuntando el diligenciamiento el formato 1DT-FR-0011 reporte de incidente de seguridad de la Información .",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C3. Garantizar que los computadores de la Policía Nacional cuenten con los productos de seguridad (Antivirus y Cifrado) para la protección de los activos de información.",
+          "p": 20,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Reporte de equipos gestionados con antivirus actualizado y conexión en los últimos 35 días + exclusiones / Reporte SINVE equipos en servicio * 100 -> 10%",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Reporte de equipos cifrados / Reporte SINVE equipos en servicio * 100 -> 10%",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C4. Implementación de controles de seguridad de la información - MSPI",
+          "p": 12,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Realizar actualización del análisis de brechas de seguridad de la información o MSPI.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Socializar ante el comité interno de seguridad de la información las brechas identificadas.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C5. Seguimiento a la implementación del Sistema de Gestión de Seguridad de la Información para la Policía Nacional.",
+          "p": 12,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Realizar Comité Interno de Seguridad de la Información como se dispone en el Manual del Sistema de Gestión de Seguridad de la Información.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C6. Toma de conciencia de seguridad de la información",
+          "p": 20,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Acciones adelantadas de toma de conciencia realizadas en los meses de marzo, abril mayo y junio.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Acciones adelantadas de toma de conciencia realizadas en los meses de julio, agosto, septiembre, octubre, noviembre y diciembre.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C7. Continuidad del Negocio",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Actualización documentación continuidad del negocio (1DT-FR-0055 INFORME ANALISIS DE IMPACTO DE NEGOCIO - BIA, 1DT-FR-0057 INFORME PARA EL ANALISIS Y DEFINICION DEL PLAN DE RECUPERACION ANTE DESASTRES, 1DT-FR-0058 INFORME PLAN DE CONTINUIDAD DEL NEGOCIO) en la presente vigencia.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "Organizar, preparar y realizar pruebas del Plan de Recuperación de Desastres.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "grupo",
+          "c": "C8. Garantizar que los computadores de la Policía Nacional se encuentren en Dominio, para la protección de los activos de información.",
+          "p": 12,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "crit",
+          "c": "(No. de equipos promovidos en el dominio + Novedades Justificadas / (No. de equipos de cómputo registrados en SINVE )* 100",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "Los equipos que se encuentren conectados a la red LAN de la Policía Nacional deben estar promovidos al dominio policia.gov.co, con direccionamiento IP dinámico generado por el servicio de DHCP.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "Cuando la información suministrada por la unidad con respecto a los ítems es igual a la información que indica la consola de administración del Directorio Activo y el sistema de información SINVE.",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        },
+        {
+          "t": "sub",
+          "c": "Indicar la ubicación de los equipos en cuanto a la Unidad Organizativa (OU) que correspondan al ítem \"número de equipos promovidos al dominio",
+          "p": 0,
+          "cumple": "",
+          "obs": ""
+        }
+      ]
     },
     {
       "n": "H.S Nivel de aseguramiento de la Red de Radio DECES",
@@ -1737,7 +1891,17 @@
           "v": null
         }
       ],
-      "periodicidad": "semestral"
+      "periodicidad": "semestral",
+      "formula": "¿La unidad cumple con el criterio?",
+      "criterios": [
+        {
+          "t": "crit",
+          "c": "(Número de equipos validados física y lógicamente / Número total de equipos programados para validación en el semestre) * 100",
+          "p": 100,
+          "cumple": "",
+          "obs": ""
+        }
+      ]
     }
   ],
   "gestionesCCTV": [
@@ -1776,39 +1940,40 @@
   "proyectoRadios": {
     "items": [
       {
-        "item": "Proyecto 1",
-        "desc": "Equipos de radiocomunicación (ejemplo — reemplazar)",
-        "cant": 10,
-        "unit": 10,
-        "aiu": 10
-      },
-      {
-        "item": "Proyecto 2",
-        "desc": "Repetidora GTR8000",
+        "item": "1",
+        "desc": "Repetidora",
         "cant": 5,
-        "unit": 0,
+        "unit": 297889900,
         "aiu": 0
       },
       {
-        "item": "",
-        "desc": "Rectificador 48VDC CONF 2+1 módulos 83.3A",
-        "cant": 0,
-        "unit": 0,
+        "item": "2",
+        "desc": "Rectificador + 1 módulos",
+        "cant": 5,
+        "unit": 88999900,
+        "aiu": 16909981
+      },
+      {
+        "item": "3",
+        "desc": "Banco de baterias",
+        "cant": 5,
+        "unit": 98699900,
+        "aiu": 18752981
+      },
+      {
+        "item": "4",
+        "desc": "Radios",
+        "cant": 200,
+        "unit": 19177000,
         "aiu": 0
       }
     ]
   },
   "gestionesRadio": [
     {
-      "proyecto": "IMPLEMENTACIÓN Y PUESTA EN MARCHA DEL SISTEMA INTEGRADO DE COMUNICACIONES, VIGILANCIA Y RADIOCOMUNICACIÓN, MEDIANTE LA DOTACIÓN DE LOS SUBSISTEMAS SIES RADIO, CCTV, COMUNICACIÓN COMUNITARIA Y RADIOCOMUNICACIONES PARA LA POLICÍA NACIONAL Y EL EJÉRCITO NACIONAL, EN EL DEPARTAMENTO DEL CESAR POR UN VALOR DE $15.542.097.839,00 POR PARTE DE LA GOBERNACION DEL CESAR.",
-      "municipios": "Actualizar",
-      "estado": "En ejecución",
-      "obs": "Renovación de equipos y repetidoras."
-    },
-    {
       "proyecto": "FORTALECIMIENTO DEL SISTEMA INTEGRADO DE EMERGENCIA Y SEGURIDAD MEDIANTE EL AUMENTO DE LAS CAPACIDADES DE VIDEO VIGILANCIA MOVIL, RADIO COMUNICACIONES, PROTECCION DE LA INFRAESTRUCTURA DIGITAL Y TECNOLOGIA DE LA POLICIA NACIONAL, EJERCITO NACIONAL Y ARMADA NACIONAL, EN EL DEPARTAMENTO DEL CESAR, POR UN VALOR DE $ 17.530.477.310,00, POR PARTE DE LA GOBERNACION DEL CESAR.",
-      "municipios": "Actualizar",
-      "estado": "En adjudicación",
+      "municipios": "Departamento de Policía Cesar",
+      "estado": "Adjudicado",
       "obs": ""
     }
   ]
