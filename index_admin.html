@@ -103,7 +103,15 @@ body.admin .vacio{visibility:visible}
 
 /* Cajas, tablas, barras */
 .cols{display:grid;gap:34px;height:100%}
-.caja{background:#fff;border:2px solid var(--linea);border-radius:18px;padding:24px 28px;display:flex;flex-direction:column;min-height:0}
+.res-wrap{display:flex;flex-direction:column;height:100%;min-height:0}
+.res-wrap>.anillos{flex:0 0 auto}
+.res-wrap>.cols{flex:1 1 auto;min-height:0;height:auto}
+.caja{background:#fff;border:2px solid var(--linea);border-radius:18px;padding:24px 28px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.caja>ul.lista{flex:1 1 auto;min-height:0;overflow:auto;padding-right:8px}
+.caja>ul.lista::-webkit-scrollbar{width:8px}.caja>ul.lista::-webkit-scrollbar-thumb{background:var(--linea);border-radius:8px}
+.caja>ul.rp-lista{flex:0 1 auto}
+.gd-table td{padding:8px 10px;vertical-align:middle}
+.gd-table tr.gd-ocu td:first-child{color:#9aa6a2;text-decoration:line-through}
 .caja h3{font-size:28px;color:var(--teal);margin-bottom:16px}
 .barras{display:flex;flex-direction:column;gap:16px}
 .barra .et{display:flex;justify-content:space-between;font-size:22px;margin-bottom:6px}
@@ -137,6 +145,12 @@ tfoot td{font-weight:700;background:var(--suave)!important;position:sticky;botto
 ul.lista{list-style:none;display:flex;flex-direction:column;gap:14px}
 ul.lista li{padding-left:30px;position:relative;font-size:24px;line-height:1.3}
 ul.lista li::before{content:"";position:absolute;left:4px;top:11px;width:12px;height:12px;background:var(--verde);border-radius:3px}
+ul.rp-lista li{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.rp-lista .rp-n{flex:1;color:var(--tinta)}
+.rp-lista .rp-v{font-weight:700;color:var(--teal);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rp-total{margin-top:16px;display:flex;justify-content:space-between;align-items:center;background:var(--oro-2);border:1px solid var(--oro);border-radius:12px;padding:12px 16px}
+.rp-total span{font-size:22px;font-weight:700;color:#6b5500}
+.rp-total b{font-size:28px;color:#6b5500;font-variant-numeric:tabular-nums}
 
 /* Perfil dentro del escenario */
 .perfil-velo{position:absolute;inset:0;background:rgba(10,30,30,.55);display:none;align-items:center;justify-content:center;z-index:20}
@@ -169,6 +183,9 @@ ul.lista li::before{content:"";position:absolute;left:4px;top:11px;width:12px;he
 .ctrl select#selTrans{max-width:250px}
 .ctrl button,.ctrl select{background:#fff;border:1px solid #ccd;border-radius:9px;padding:7px 12px;font-size:14px;color:var(--tinta)}
 .ctrl button.on{background:var(--oro);border-color:var(--oro);font-weight:700}
+.ctrl button.disc{padding:7px 9px;color:#9aa6a2;border-color:#e3e8e6;font-size:13px}
+.ctrl button.disc:hover{color:var(--teal);border-color:var(--teal)}
+body.admin #btnRespaldo{display:none}
 .ctrl .cont{color:#fff;font-size:13px;padding:0 6px}
 .barra-admin{position:fixed;left:0;right:0;bottom:0;background:var(--oro-2);color:#6b5500;padding:8px 16px;font-size:13px;display:none;gap:8px;align-items:center;z-index:60;flex-wrap:wrap}
 body.admin .barra-admin{display:flex}
@@ -447,6 +464,45 @@ body.admin .pda-ovl{pointer-events:auto}
 .mini-lado{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px;overflow:auto}
 .mini-nota{font-size:14px;color:var(--gris);line-height:1.4}
 .mini-h6{font-size:16px;font-weight:700;color:#1f4045;margin:4px 0 2px}
+.mini-mapa.zoomable{overflow:hidden}
+.mapa-zoom{position:absolute;inset:0;transform-origin:0 0;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.mapa-zoom svg{position:absolute;inset:0;width:100%;height:100%}
+.mapa-zoom .pda-badge{transform:translate(-50%,-50%) scale(calc(1/var(--z,1)));transition:transform .6s cubic-bezier(.4,0,.2,1);display:none}
+.mapa-zoom .pda-badge.on{display:inline-block}
+path.muni-sel{fill:#bfe3cb!important;stroke:#15682f!important;stroke-width:1.5!important}
+.pda-pin{position:absolute;transform-origin:50% 100%;pointer-events:none;z-index:6;text-align:center}
+.pda-pin .pin-dot{display:block;width:15px;height:15px;margin:0 auto;border-radius:50% 50% 50% 0;background:#c0392b;border:2px solid #fff;transform:rotate(-45deg);box-shadow:0 3px 7px rgba(0,0,0,.35)}
+.pda-pin .pin-lbl{display:inline-block;margin-top:4px;background:#1f2d2b;color:#fff;font:700 12px/1.2 'Century Gothic',sans-serif;padding:3px 8px;border-radius:7px;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.pda-vertodo{position:absolute;left:8px;top:8px;z-index:9;background:#15682f;color:#fff;border:none;border-radius:8px;padding:6px 11px;font:600 13px/1 'Century Gothic',sans-serif;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.28);display:none}
+.pda-vertodo.on{display:block}
+body.admin .mini-mapa.placing{cursor:crosshair}
+body.admin .mini-mapa.placing::after{content:"Clic en el mapa para ubicar el corregimiento";position:absolute;left:8px;bottom:8px;z-index:9;background:rgba(21,104,47,.92);color:#fff;font:600 12px/1 'Century Gothic',sans-serif;padding:6px 9px;border-radius:7px}
+.pda-tipo{font:600 12px/1 'Century Gothic',sans-serif;border:1px solid var(--linea);border-radius:7px;padding:3px 4px;background:#fff;color:#1f4045;max-width:108px}
+body:not(.admin) .pda-tipo{pointer-events:none;-webkit-appearance:none;appearance:none;background:#f3f6f5;border-color:#e6ebe9;padding-right:6px}
+.pda-loc{border:none;background:#eef5f1;color:#15682f;border-radius:7px;padding:3px 8px;cursor:pointer;font-size:15px;line-height:1}
+.pda-loc:hover{background:#15682f;color:#fff}
+tr.pda-sel>td{background:#fff7e6}
+tr[data-prow]{cursor:pointer}
+.pcat-box{margin:2px 0 6px}
+.pcat-h{font-size:16px;font-weight:700;color:#1f4045;margin:2px 0 7px}
+.pcat-grid{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.pcat-tile{flex:1 1 118px;min-width:108px;background:#f2f8f4;border:1px solid #d9e7df;border-radius:12px;padding:9px 12px;display:flex;flex-direction:column;gap:1px;cursor:pointer;transition:.2s}
+.pcat-tile:hover{border-color:#15682f;box-shadow:0 4px 12px rgba(16,45,90,.12)}
+.pcat-tile.act{background:#15682f;border-color:#15682f}
+.pcat-tile.act .pcat-n,.pcat-tile.act .pcat-v,.pcat-tile.act .pcat-s{color:#fff}
+.pcat-tile.total{background:#fff8e6;border-color:#e6c200}
+.pcat-tile.total .pcat-v{color:#8a6d00}
+.pcat-tile.total:hover{border-color:#c9a900;box-shadow:0 4px 12px rgba(180,150,0,.18)}
+.pin-num{display:inline-block;background:#fff;color:#b3271e;border-radius:9px;padding:0 6px;margin-left:3px;font-weight:800}
+.pcat-clear{border:none;background:#fff2f0;color:#b3271e;border-radius:8px;padding:3px 9px;cursor:pointer;font:600 12px/1 'Century Gothic',sans-serif;margin-left:8px}
+.pcat-clear:hover{background:#b3271e;color:#fff}
+.pcat-n{font-size:13px;color:#51645d;font-weight:600;display:flex;align-items:center;gap:6px;justify-content:space-between}
+.pcat-v{font-size:26px;font-weight:800;color:#15682f;line-height:1.05}
+.pcat-s{font-size:12px;color:#8a9a93}
+.pcat-del{border:none;background:none;color:#b3271e;cursor:pointer;font-size:13px;line-height:1;padding:0}
+body.admin [data-pcat]{outline:1px dashed #b9cfc2;outline-offset:2px;border-radius:3px}
+.pcat-add{align-self:center;background:#eef5f1;color:#15682f;border:1px dashed #9fc3ad;border-radius:12px;padding:9px 14px;cursor:pointer;font:600 14px/1 'Century Gothic',sans-serif}
+.pcat-add:hover{background:#15682f;color:#fff}
 .pda-badge{position:absolute;transform:translate(-50%,-50%);min-width:26px;height:26px;padding:0 5px;border-radius:14px;background:#13796b;color:#fff;font:700 15px/24px 'Century Gothic',sans-serif;text-align:center;border:2px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.28);white-space:nowrap;box-sizing:border-box}
 .pda-badge.vacia{display:none}
 .cleyenda{display:flex;flex-direction:column;gap:9px;font-size:15.5px;font-weight:700;color:#1f3a44}
@@ -620,13 +676,16 @@ body.admin .cd-num:focus{outline:2px solid var(--oro);background:#fffdf3}
   <select id="selVel" title="Velocidad de la transición"><option value="1.45">Lenta</option><option value="1" selected>Normal</option><option value="0.65">Rápida</option></select>
   <button id="btnEfectos" title="Animaciones de entrada de títulos y contenido (E)">✨ Animaciones</button>
   <button id="btnImprimir" title="Guardar como PDF">PDF</button>
+  <button id="btnRespaldo" class="disc" title="Cargar un respaldo JSON (restaura los datos del administrador)">⬆</button>
   <button id="btnAdmin">✎ Administrar</button>
 </div>
+<input type="file" id="archivoResp" accept=".json" hidden>
 <div class="barra-admin">
   <span><b>Modo administrar:</b> edite desde las tarjetas y haga clic en las celdas de las tablas.</span>
   <span style="flex:1"></span>
   <span style="color:#6b5500">Orden:</span><button id="btnMovAnt" title="Mover la diapositiva actual antes">◀ Mover</button><button id="btnMovSig" title="Mover la diapositiva actual después">Mover ▶</button>
   <button id="btnAddSlide" title="Agregar una diapositiva nueva después de la actual">＋ Diapositiva</button>
+  <button id="btnVisib" title="Mostrar u ocultar diapositivas de la presentación">👁 Mostrar/ocultar</button>
   <button id="btnDelSlide" title="Eliminar la diapositiva actual">🗑 Eliminar diapositiva</button>
   <button id="btnMeta">Portada y necesidades</button>
   <button id="btnSecc">Secciones del perfil</button>
@@ -1088,7 +1147,12 @@ const RAW=JSON.parse(ORIGINAL);
 let D=RAW,PROT=null;
 if(!RAW.cifrado){try{const g=localStorage.getItem(CLAVE);if(g){const LS=JSON.parse(g);
   const tf=(RAW.meta&&RAW.meta.guardado)||'',tl=(LS.meta&&LS.meta.guardado)||'';
-  if(tf&&tf>tl){D=RAW;try{localStorage.setItem(CLAVE,ORIGINAL)}catch(_){}}else{D=LS}
+  // Si el administrador ya guardó o importó sus propios datos en este navegador (meta.propio),
+  // SIEMPRE ganan, aunque se abra una versión más nueva del archivo. Así una actualización
+  // del HTML no borra el trabajo del administrador; el respaldo JSON también queda marcado.
+  if(LS.meta&&LS.meta.propio){D=LS}
+  else if(tf&&tf>tl){D=RAW;try{localStorage.setItem(CLAVE,ORIGINAL)}catch(_){}}
+  else{D=LS}
 }}catch(e){}}
 
 const $=s=>document.querySelector(s);
@@ -1107,7 +1171,7 @@ const ET=(k,def)=>`<span data-txt="${k}">${esc(TX(k,def))}</span>`;
 const letras=t=>[...String(t||'')].map((c,i)=>`<span class="l" style="--i:${i}">${esc(c)}</span>`).join('');
 const inic=n=>String(n||'?').split(/\s+/).filter(Boolean).slice(0,2).map(p=>p[0]).join('').toUpperCase();
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('ver');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('ver'),2200)}
-function guardar(m){if(PROT)return;D.meta.ejemplo=false;D.meta.guardado=new Date().toISOString();try{localStorage.setItem(CLAVE,JSON.stringify(D))}catch(e){toast('No se pudo guardar en el navegador: exporte el respaldo JSON');return}if(m)toast(m)}
+function guardar(m){if(PROT)return;D.meta.ejemplo=false;D.meta.propio=true;D.meta.guardado=new Date().toISOString();try{localStorage.setItem(CLAVE,JSON.stringify(D))}catch(e){toast('No se pudo guardar en el navegador: exporte el respaldo JSON');return}if(m)toast(m)}
 function cEst(e){e=(e||'').toLowerCase();if(/operativ|cumplid|activo/.test(e))return'e-ok';if(/intermit|mant|curso|pendiente/.test(e))return'e-warn';if(/fuera|baja|averi|vencid/.test(e))return'e-bad';return'e-neu'}
 function foto(p){return p.foto?`<img src="${esc(p.foto)}" alt="">`:`<div class="iniciales">${esc(inic(p.nombre))}</div>`}
 
@@ -1136,11 +1200,14 @@ const POR_PAG=6;
 const ORDEN_DEF=['personal','capacidades','servicios','cctv','conectividad','radios','elementos','indicadores','resumen'];
 const PERIODOS={mensual:['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],trimestral:['T1','T2','T3','T4'],semestral:['S1','S2'],anual:['Anual']};
 const PERNOM={mensual:'Mensual',trimestral:'Trimestral',semestral:'Semestral',anual:'Anual'};
-function ordenActual(){const custom=Object.keys(D.meta.custom||{}),oc=D.meta.ocultas||[],todos=ORDEN_DEF.concat(custom);
+function ordenCompleto(){const custom=Object.keys(D.meta.custom||{}),todos=ORDEN_DEF.concat(custom);
   let o=(D.meta.orden||[]).filter(k=>todos.includes(k));
   ORDEN_DEF.forEach((k,idx)=>{if(!o.includes(k)){let pos=o.length;for(let j=idx-1;j>=0;j--){const pi=o.indexOf(ORDEN_DEF[j]);if(pi>=0){pos=pi+1;break}}o.splice(pos,0,k)}});
   custom.forEach(k=>{if(!o.includes(k))o.push(k)});
-  return o.filter(k=>!oc.includes(k))}
+  return o}
+function ordenActual(){const oc=D.meta.ocultas||[];return ordenCompleto().filter(k=>!oc.includes(k))}
+const NOMBRE_DEF={personal:'Talento humano',capacidades:'Capacidades tecnológicas',servicios:'Servicios',cctv:'Circuitos Cerrados de Televisión',conectividad:'Conectividad',radios:'Red de radios',elementos:'Elementos tecnológicos',indicadores:'Indicadores de procesos',resumen:'Resumen y necesidades'};
+function nombreSlide(k){if(k.indexOf('custom_')===0){const c=(D.meta.custom&&D.meta.custom[k])||{};return metaTit(k,c.titulo||'Nueva diapositiva')}return metaTit(k,NOMBRE_DEF[k]||k)}
 function diapositivas(){
   const M=D.meta,t=T(),L=[];
   const B={
@@ -1179,6 +1246,13 @@ function eliminarSlide(){const sl=S[actual];if(!sl)return;const k=sl.key;
   if(k.indexOf('custom_')===0){D.meta.orden=ordenActual().filter(x=>x!==k);if(D.meta.custom)delete D.meta.custom[k]}
   else{D.meta.ocultas=Array.from(new Set((D.meta.ocultas||[]).concat(k)))}
   guardar('Diapositiva eliminada');render();mostrar(Math.max(1,Math.min(actual,S.length-1)),false)}
+function gestorDiapos(){const oc=D.meta.ocultas||[];
+  const filas=ordenCompleto().map(k=>{const ocu=oc.includes(k);
+    return `<tr class="${ocu?'gd-ocu':''}"><td>${esc(nombreSlide(k))}</td><td style="text-align:right"><button class="btn ${ocu?'':'pri'}" data-visib="${esc(k)}">${ocu?'👁 Mostrar':'🚫 Ocultar'}</button></td></tr>`}).join('');
+  abrir(`<div class="form" style="min-width:480px"><h3>👁 Mostrar u ocultar diapositivas</h3>
+   <div class="nota">Oculte las diapositivas que no quiere que se vean en la presentación ni en la copia exportada. Puede volver a mostrarlas cuando quiera. La portada y la diapositiva de Gracias siempre se muestran.</div>
+   <table class="ge-table gd-table"><thead><tr><th>Diapositiva</th><th style="text-align:right">Acción</th></tr></thead><tbody>${filas}</tbody></table>
+   <div class="pie-f"><button type="button" class="btn pri" data-cerrar>Listo</button></div></div>`)}
 const accBtns=id=>`<div class="acc"><button class="btn mv" data-mv="${id}" data-dir="-1" title="Mover antes">↑</button><button class="btn mv" data-mv="${id}" data-dir="1" title="Mover después">↓</button><button class="btn" data-ed="${id}">✎ Editar</button><button class="btn peligro" data-del="${id}">Eliminar</button></div>`;
 function tarjeta(p){return`<div class="pcard ${p.jefe?'jefe':''}" data-id="${esc(p.id)}"><div class="pfoto">${foto(p)}</div>
   <div class="ptxt"><span class="gr">${esc(p.grado)}</span><h4>${esc(p.nombre)}</h4><span class="cg">${esc(p.cargo)}</span>${accBtns(esc(p.id))}</div></div>`}
@@ -1197,7 +1271,7 @@ const SERVIC={
  canales:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>',
  bio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10a2 2 0 0 1 2 2c0 2.5-.3 4.5-1 6.5"/><path d="M8.5 5.5A7 7 0 0 1 19 11.5v1"/><path d="M5 12a7 7 0 0 1 1.5-4.3"/><path d="M5.5 15.5A14 14 0 0 0 6 19"/><path d="M8.5 12a3.5 3.5 0 0 1 7 0c0 3-.4 5.5-1.2 7.8"/><path d="M11 20.9c.4-2 .6-4 .6-6.4"/></svg>'};
 function mapaBase(extra){return `<svg viewBox="${MAPAC.vb}" preserveAspectRatio="xMidYMid meet"><rect x="0" y="0" width="100%" height="100%" fill="#eef5fb"/>
-  <g>${MAPAC.muni.map(m=>`<path d="${m.d}" fill="#e3f0e7" stroke="#2e6f3b" stroke-width="0.8"/>`).join('')}</g>
+  <g>${MAPAC.muni.map(m=>`<path data-muni="${sinAc(m.n)}" d="${m.d}" fill="#e3f0e7" stroke="#2e6f3b" stroke-width="0.8"/>`).join('')}</g>
   <g>${MAPAC.muni.map(m=>nombreMuni(m,null)).join('')}</g>${extra||''}</svg>`}
 const CORREG={'puerto mosquito':'Gamarra','los angeles':'Rio de Oro','chimila':'El Copey','caracolicito':'El Copey','arjona':'Astrea','la loma':'El Paso','san roque':'Curumani','el burro':'Pailitas','san pedro':'Aguachica','campo serrano':'Aguachica'};
 function muniDeSitio(sitio){const s=sinAc(sitio);let hit=null;
@@ -1210,15 +1284,93 @@ function mapaBadges(sum){const vb=MAPAC.vb.split(' ').map(Number),W=vb[2],H=vb[3
   const badges=MAPAC.muni.map(m=>{const key=sinAc(m.n),v=sum[key]||0;
     return `<span class="pda-badge${v?'':' vacia'}" style="left:${(m.cx/W*100).toFixed(2)}%;top:${((m.cy-7)/H*100).toFixed(2)}%">${v||''}</span>`}).join('');
   return `<div class="mini-mapa">${mapaBase('')}<div class="pda-ovl">${badges}</div></div>`}
-function tablaConsol(k,titulo,hSite,hDisp,addL){const L=D.inventario[k]||[],tot=L.reduce((t,r)=>t+num(r.disp),0);
-  return `<h6 class="mini-h6">${ET('consol_tit_'+k,titulo)}</h6>
-   <div class="tw"><table><thead><tr><th class="num">${ET('consol_num_'+k,'N.º')}</th><th>${ET('consol_site_'+k,hSite)}</th><th class="num">${ET('consol_disp_'+k,hDisp)}</th><th class="solo-admin"></th></tr></thead><tbody>
-   ${L.map((r,i)=>`<tr><td class="num">${i+1}</td><td data-edit data-t="${k}" data-i="${i}" data-k="sitio">${esc(r.sitio)}</td><td class="num" data-edit data-t="${k}" data-i="${i}" data-k="disp">${fmt(num(r.disp))}</td><td class="solo-admin"><button class="btn peligro" data-delfila="${k}" data-i="${i}">✕</button></td></tr>`).join('')}
-   </tbody><tfoot><tr><td class="num"></td><td>${ET('consol_total_'+k,'TOTAL GENERAL')}</td><td class="num">${fmt(tot)}</td><td class="solo-admin"></td></tr></tfoot></table></div>
+// ---- PDA interactivo: zoom al municipio y pin del corregimiento ----
+let pdaSel=-1,pdaCatFiltro='';const _bbxC={};
+const PDACAT_DEF=[{id:'est',nombre:'Estaciones',sing:'Estación',geo:false,fija:true},{id:'sub',nombre:'Subestaciones',sing:'Subestación',geo:true,fija:true},{id:'cai',nombre:'CAI',sing:'CAI',geo:true,fija:true},{id:'cmd',nombre:'Comandantes',sing:'Comandante',geo:false,fija:true}];
+function pdaCats(){if(!D.meta.pdaCats||!D.meta.pdaCats.length)D.meta.pdaCats=PDACAT_DEF.map(c=>Object.assign({},c));return D.meta.pdaCats}
+function catById(id){return pdaCats().find(c=>c.id===id)}
+function catGeo(id){const c=catById(id);return c?!!c.geo:true}
+function catSing(id){const c=catById(id);return c?(c.sing||c.nombre):id}
+function muniBBox(key){if(_bbxC[key])return _bbxC[key];const m=MAPAC.muni.find(x=>sinAc(x.n)===key);if(!m)return null;
+  const n=(m.d.match(/-?\d+\.?\d*/g)||[]).map(Number),xs=[],ys=[];for(let i=0;i+1<n.length;i+=2){xs.push(n[i]);ys.push(n[i+1])}
+  const bb=[Math.min.apply(0,xs),Math.min.apply(0,ys),Math.max.apply(0,xs)-Math.min.apply(0,xs),Math.max.apply(0,ys)-Math.min.apply(0,ys)];_bbxC[key]=bb;return bb}
+function _vbWH(){const vb=MAPAC.vb.split(' ').map(Number);return[vb[2],vb[3]]}
+function zoomMuni(key){const[W,H]=_vbWH(),bb=muniBBox(key);if(!bb)return null;const pad=1.7,bw=bb[2]*pad,bh=bb[3]*pad;
+  let z=Math.min(W/bw,H/bh);z=Math.max(1.3,Math.min(z,3.4));const fx=(bb[0]+bb[2]/2)/W,fy=(bb[1]+bb[3]/2)/H;
+  let tx=0.5-z*fx,ty=0.5-z*fy;tx=Math.min(0,Math.max(1-z,tx));ty=Math.min(0,Math.max(1-z,ty));return{z,tx,ty}}
+function zoomPunto(px,py,z){const[W,H]=_vbWH(),fx=px/W,fy=py/H;let tx=0.5-z*fx,ty=0.5-z*fy;tx=Math.min(0,Math.max(1-z,tx));ty=Math.min(0,Math.max(1-z,ty));return{z,tx,ty}}
+function transStr(o){return `translate(${(o.tx*100).toFixed(2)}%,${(o.ty*100).toFixed(2)}%) scale(${o.z.toFixed(3)})`}
+function tipoSitio(r){if(r.tipo&&catById(r.tipo))return r.tipo;
+  const s=sinAc(r.sitio);
+  if(/\bcai\b/.test(s))return 'cai';
+  if(s.indexOf('subestacion')>=0||s.indexOf('puesto')>=0)return 'sub';
+  for(const k in CORREG){if(s.indexOf(k)>=0)return 'sub'}
+  let est=false;MAPAC.muni.forEach(m=>{if(s.indexOf(sinAc(m.n))>=0)est=true});
+  return est?'est':'sub'}
+function nombreCorreg(s){return String(s).replace(/^\s*(sub\s?estaci[oó]n|estaci[oó]n|c\.?a\.?i\.?|cai|puesto)\s*(de\s+polic[ií]a\s*)?/i,'').replace(/\s*\(.*\)\s*$/,'').trim()||String(s)}
+function zoomInfo(r){const[W,H]=_vbWH(),key=muniDeSitio(r.sitio),tipo=tipoSitio(r);let px=r.px,py=r.py;
+  if(key){const m=MAPAC.muni.find(x=>sinAc(x.n)===key);if(m&&(px==null||py==null)){px=m.cx;py=m.cy}const z=zoomMuni(key);if(z)return Object.assign({key,tipo,px,py},z)}
+  if(px!=null&&py!=null)return Object.assign({key:'',tipo,px,py},zoomPunto(px,py,3.3));
+  return {key:'',tipo,px:W/2,py:H/2,z:1,tx:0,ty:0}}
+function mapaPDA(){const[W,H]=_vbWH(),L=D.inventario.pdadisp||[];
+  const r=(pdaSel>=0&&pdaSel<L.length)?L[pdaSel]:null;let trans='none',pin='',selKey='',placing=false,zc=1,numBadge='';
+  if(r){const info=zoomInfo(r);trans=transStr(info);selKey=info.key;zc=info.z;const val=fmt(num(r.disp));
+    if(catGeo(info.tipo)){pin=`<div class="pda-pin" style="left:${(info.px/W*100).toFixed(2)}%;top:${(info.py/H*100).toFixed(2)}%;transform:translateY(-100%) scale(${(1/info.z).toFixed(3)})"><span class="pin-dot"></span><span class="pin-lbl">${esc(nombreCorreg(r.sitio))} <b class="pin-num">${val}</b></span></div>`;placing=true}
+    else{numBadge=`<span class="pda-badge on pda-num" style="left:${(info.px/W*100).toFixed(2)}%;top:${((info.py-7)/H*100).toFixed(2)}%">${val}</span>`}}
+  let base=mapaBase('');if(selKey)base=base.replace('data-muni="'+selKey+'"','data-muni="'+selKey+'" class="muni-sel"');
+  return `<div class="mini-mapa zoomable${placing?' placing':''}"><button class="pda-vertodo${r?' on':''}" data-vertodo>↩ Ver todo</button><div class="mapa-zoom" id="pdaZoom" style="transform:${trans};--z:${zc.toFixed(3)}">${base}<div class="pda-ovl">${numBadge}${pin}</div></div></div>`}
+function aplicarPDA(){const pop=document.querySelector('.serv-pop[data-pop="pda"]');if(!pop)return;const L=D.inventario.pdadisp||[];
+  const zoom=pop.querySelector('#pdaZoom'),ovl=pop.querySelector('.pda-ovl'),vt=pop.querySelector('.pda-vertodo'),mm=pop.querySelector('.mini-mapa');if(!zoom)return;
+  pop.querySelectorAll('tr.pda-sel').forEach(t=>t.classList.remove('pda-sel'));
+  zoom.querySelectorAll('path.muni-sel').forEach(p=>p.classList.remove('muni-sel'));
+  const op=ovl.querySelector('.pda-pin');if(op)op.remove();
+  const onum=ovl.querySelector('.pda-num');if(onum)onum.remove();
+  mm.classList.remove('placing');
+  const r=(pdaSel>=0&&pdaSel<L.length)?L[pdaSel]:null;
+  if(!r){zoom.style.transform='none';zoom.style.setProperty('--z','1');vt.classList.remove('on');return}
+  const info=zoomInfo(r),[W,H]=_vbWH(),val=fmt(num(r.disp));
+  zoom.style.transform=transStr(info);zoom.style.setProperty('--z',info.z.toFixed(3));vt.classList.add('on');
+  const row=pop.querySelector('tr[data-prow="'+pdaSel+'"]');if(row)row.classList.add('pda-sel');
+  if(info.key){const p=zoom.querySelector('path[data-muni="'+info.key+'"]');if(p)p.classList.add('muni-sel')}
+  if(catGeo(info.tipo)){const pin=document.createElement('div');pin.className='pda-pin';
+    pin.style.left=(info.px/W*100).toFixed(2)+'%';pin.style.top=(info.py/H*100).toFixed(2)+'%';pin.style.transform='translateY(-100%) scale('+(1/info.z).toFixed(3)+')';
+    pin.innerHTML='<span class="pin-dot"></span><span class="pin-lbl">'+esc(nombreCorreg(r.sitio))+' <b class="pin-num">'+val+'</b></span>';ovl.appendChild(pin);
+    if(document.body.classList.contains('admin'))mm.classList.add('placing')}
+  else{const bg=document.createElement('span');bg.className='pda-badge on pda-num';bg.style.left=(info.px/W*100).toFixed(2)+'%';bg.style.top=((info.py-7)/H*100).toFixed(2)+'%';bg.textContent=val;ovl.appendChild(bg)}}
+function selPDA(i){pdaSel=(pdaSel===i?-1:i);aplicarPDA()}
+function setTipoPDA(i,val){const r=(D.inventario.pdadisp||[])[i];if(!r)return;r.tipo=val;guardar('Tipo actualizado');render()}
+function ubicarPin(el,ev){if(!document.body.classList.contains('admin')||pdaSel<0)return;const r=(D.inventario.pdadisp||[])[pdaSel];if(!r||!catGeo(tipoSitio(r)))return;
+  const info=zoomInfo(r);if(!info)return;const R=el.getBoundingClientRect();const[W,H]=_vbWH();
+  const rx=(ev.clientX-R.left)/R.width,ry=(ev.clientY-R.top)/R.height,fmx=(rx-info.tx)/info.z,fmy=(ry-info.ty)/info.z;
+  r.px=Math.max(0,Math.min(W,fmx*W));r.py=Math.max(0,Math.min(H,fmy*H));guardar('Corregimiento ubicado');aplicarPDA()}
+function tablaConsol(k,titulo,hSite,hDisp,addL,pda){const L=D.inventario[k]||[];
+  const flt=pda?pdaCatFiltro:'';const vis=L.map((r,i)=>({r,i})).filter(x=>!flt||tipoSitio(x.r)===flt);
+  const tot=vis.reduce((t,x)=>t+num(x.r.disp),0);
+  const cab=pda?`<th>${ET('consol_tipo_'+k,'Tipo')}</th>`:'';const nx=pda?1:0,ncol=pda?5:4;
+  const fila=(r,i,n)=>{const tc=pda?`<td>${`<select class="pda-tipo" data-ptipo="${i}">${pdaCats().map(c=>`<option value="${c.id}"${c.id===tipoSitio(r)?' selected':''}>${esc(c.sing||c.nombre)}</option>`).join('')}</select>`}</td>`:'';
+    const acc=pda?`<td class="pda-acc"><button class="pda-loc" data-ploc="${i}" title="Ver en el mapa">🔍</button><button class="btn peligro solo-admin" data-delfila="${k}" data-i="${i}">✕</button></td>`:`<td class="solo-admin"><button class="btn peligro" data-delfila="${k}" data-i="${i}">✕</button></td>`;
+    return `<tr${pda?` data-prow="${i}"${i===pdaSel?' class="pda-sel"':''}`:''}><td class="num">${n}</td><td data-edit data-t="${k}" data-i="${i}" data-k="sitio">${esc(r.sitio)}</td>${tc}<td class="num" data-edit data-t="${k}" data-i="${i}" data-k="disp">${fmt(num(r.disp))}</td>${acc}</tr>`};
+  const cuerpo=vis.length?vis.map((x,n)=>fila(x.r,x.i,n+1)).join(''):`<tr><td class="num"></td><td colspan="${ncol-1}" style="color:#9aa6a2">Sin unidades de este tipo</td></tr>`;
+  const tituloF=flt?`${esc(TX('consol_tit_'+k,titulo))} — ${esc(catSing(flt))}`:ET('consol_tit_'+k,titulo);
+  return `<h6 class="mini-h6">${flt?tituloF:ET('consol_tit_'+k,titulo)}</h6>
+   <div class="tw"><table><thead><tr><th class="num">${ET('consol_num_'+k,'N.º')}</th><th>${ET('consol_site_'+k,hSite)}</th>${cab}<th class="num">${ET('consol_disp_'+k,hDisp)}</th><th${pda?'':' class="solo-admin"'}></th></tr></thead><tbody>
+   ${cuerpo}
+   </tbody><tfoot><tr><td class="num"></td><td${nx?' colspan="2"':''}>${flt?esc('TOTAL '+catSing(flt).toUpperCase()):ET('consol_total_'+k,'TOTAL GENERAL')}</td><td class="num">${fmt(tot)}</td><td${pda?'':' class="solo-admin"'}></td></tr></tfoot></table></div>
    <div style="margin-top:8px"><button class="btn solo-admin" data-addfila="${k}">＋ ${esc(addL)}</button></div>`}
+function cuadroPDA(){const L=D.inventario.pdadisp||[],cats=pdaCats(),cont={},disp={};
+  cats.forEach(c=>{cont[c.id]=0;disp[c.id]=0});
+  L.forEach(r=>{const t=tipoSitio(r);if(cont[t]==null)return;cont[t]++;disp[t]+=num(r.disp)});
+  const totalPDA=L.reduce((t,r)=>t+num(r.disp),0);
+  const totTile=`<div class="pcat-tile total" data-pcatflt="" title="Total de dispositivos PDA — clic para ver todas"><span class="pcat-n"><span data-txt="pda_cuadro_total">${esc(TX('pda_cuadro_total','Total PDA'))}</span></span><span class="pcat-v">${fmt(totalPDA)}</span><span class="pcat-s">dispositivos</span></div>`;
+  const tiles=cats.map(c=>`<div class="pcat-tile${pdaCatFiltro===c.id?' act':''}" data-pcatflt="${c.id}" title="Clic para ver solo estas unidades"><span class="pcat-n"><span data-pcat="${c.id}">${esc(c.nombre)}</span>${c.fija?'':`<button class="pcat-del solo-admin" data-pcatdel="${c.id}" title="Quitar unidad">✕</button>`}</span><span class="pcat-v">${fmt(cont[c.id]||0)}</span><span class="pcat-s">${fmt(disp[c.id]||0)} disp.</span></div>`).join('');
+  return `<div class="pcat-box"><div class="pcat-h">${ET('pda_cuadro_h','Resumen de unidades')}${pdaCatFiltro?` <button class="pcat-clear" data-pcatflt="">✕ Quitar filtro</button>`:''}</div><div class="pcat-grid">${totTile}${tiles}<button class="pcat-add solo-admin" data-pcatadd title="Agregar otra unidad">＋ ${ET('pda_cuadro_add','Agregar unidad')}</button></div></div>`}
+function agregarCatPDA(){const n=(window.prompt('Nombre de la nueva unidad (p. ej. Fuerte de Carabineros, Puesto de control):')||'').trim();if(!n)return;
+  const id='cat_'+Date.now().toString(36);pdaCats().push({id,nombre:n,sing:n,geo:true});guardar('Unidad agregada');render()}
+function quitarCatPDA(id){const c=catById(id);if(!c||c.fija)return;if(!confirmar('¿Quitar esta unidad? Los sitios marcados con ella pasarán a Subestación.'))return;
+  (D.inventario.pdadisp||[]).forEach(r=>{if(r.tipo===id)r.tipo='sub'});D.meta.pdaCats=pdaCats().filter(x=>x.id!==id);guardar('Unidad quitada');render()}
 function panelPDA(){return `<h5>${SERVIC.pda} ${ET('h5_pda','Asistente Digital Personal — Dispositivos por municipio')}</h5>
-   <div class="mini-row">${mapaBadges(sumaPorMuni('pdadisp'))}
-   <div class="mini-lado"><p class="mini-nota">${ET('nota_pda','Cada círculo del mapa muestra el total de dispositivos del municipio, calculado automáticamente desde el consolidado (las subestaciones y CAI se suman a su municipio). Edite la tabla para actualizar el mapa.')}</p>${tablaConsol('pdadisp','Consolidado de dispositivos','Estación, subestación o CAI','Dispositivos','Agregar sitio')}</div></div>`}
+   <div class="mini-row">${mapaPDA()}
+   <div class="mini-lado"><p class="mini-nota">${ET('nota_pda','Marque cada sitio con su tipo de unidad. Pulse 🔍 en una fila: si es Estación/Comandante el mapa hace zoom al municipio; si es Subestación/CAI, hace zoom y señala el corregimiento con su nombre. En modo administrar, con una de estas seleccionada, haga clic en el mapa para ubicarla.')}</p>${cuadroPDA()}${tablaConsol('pdadisp','Consolidado de dispositivos','Estación, subestación o CAI','Dispositivos','Agregar sitio',true)}</div></div>`}
 function cctvColor(s,f){if(num(f)<=0)return '#1f9d57';if(num(s)<=0)return '#d8261f';return '#e8920c'}
 function mapaCCTV(){const vb=MAPAC.vb.split(' ').map(Number),W=vb[2],H=vb[3],by={};
   (D.inventario.cctv||[]).forEach(r=>{by[sinAc(r.municipio)]={s:num(r.servicio),f:num(r.fservicio)}});
@@ -1483,7 +1635,7 @@ function leyendaMapa(){const dot=(c)=>`<circle cx="20" cy="0" r="7" fill="${c}" 
  return `<g transform="translate(290,512)"><rect x="0" y="0" width="262" height="92" rx="9" fill="#fff" stroke="#cfd9e3" stroke-width="1.2" opacity=".97"/>`+
   rows.map((r,i)=>`<g transform="translate(0,${24+i*24})">${r[0]}<text x="40" y="4" fill="#19313f" font-size="12.5" font-weight="700" font-family="Century Gothic,sans-serif">${r[1]}</text></g>`).join('')+`</g>`}
 function mapaSVG(){const P=MAPAC.puntos||[],ST=MAPAC.sitios||[];const sset=new Set(ST.filter(s=>s.tx!=null).map(s=>sinAc(s.n)));return `<svg viewBox="${MAPAC.vb}" class="mapa-svg"><rect x="0" y="0" width="100%" height="100%" fill="#eef5fb"/>
-  <g>${MAPAC.muni.map(m=>`<path d="${m.d}" fill="#e3f0e7" stroke="#2e6f3b" stroke-width="0.8"/>`).join('')}</g>
+  <g>${MAPAC.muni.map(m=>`<path data-muni="${sinAc(m.n)}" d="${m.d}" fill="#e3f0e7" stroke="#2e6f3b" stroke-width="0.8"/>`).join('')}</g>
   <g>${MAPAC.muni.map(m=>nombreMuni(m,sset)).join('')}</g>
   <g>${P.map(punto).join('')}</g>
   <g>${ST.map(antena).join('')}</g>
@@ -1511,16 +1663,25 @@ function slideEle(t){return`<div class="cols" style="grid-template-columns:820px
    <div class="caja compacta ele-caja">${H3('h3_eledet','Detalle')}<div class="ele-scroll">${tablaElementos()}</div></div></div>`}
 function anillo(p,tit,sub){const r=48,c=2*Math.PI*r,col=p>=85?'var(--ok)':p>=70?'var(--warn)':'var(--bad)';
   return`<div class="anillo"><svg width="124" height="124" viewBox="0 0 124 124" style="flex:none"><circle cx="62" cy="62" r="${r}" fill="none" stroke="#edf1ef" stroke-width="14"/><circle class="arco" cx="62" cy="62" r="${r}" fill="none" stroke="${col}" stroke-width="14" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 62 62)"/><text x="62" y="70" text-anchor="middle" font-size="26" font-weight="700" fill="#005851" font-family="Century Gothic,sans-serif" data-count="${p}" data-suf="%">${p}%</text></svg><div><b>${esc(tit)}</b><small>${esc(sub)}</small></div></div>`}
+function proyTotal(key){return ((D[key]&&D[key].items)||[]).reduce((s,r)=>s+(num(r.unit)+num(r.aiu))*num(r.cant),0)}
 function slideRes(t){const fallas=[...D.inventario.elementos.map(x=>({n:x.categoria,v:num(x.fuera)})),...D.inventario.radios.map(x=>({n:x.tipo,v:num(x.mantenimiento)+num(x.baja)}))].filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,5);
   const oc=D.meta.ocultas||[],A=[],cc=D.inventario.cctv||[],ccOk=cc.reduce((s,r)=>s+num(r.servicio),0),ccTot=cc.reduce((s,r)=>s+num(r.servicio)+num(r.fservicio),0);
   if(!oc.includes('conectividad'))A.push(anillo(pct(t.enlOk,t.enl),'Conectividad',`${t.enlOk} de ${t.enl} enlaces`));
   if(!oc.includes('cctv'))A.push(anillo(pct(ccOk,ccTot),'CCTV',`${fmt(ccOk)} de ${fmt(ccTot)} cámaras`));
   if(!oc.includes('radios')){A.push(anillo(pct(t.radOk,t.rad),'Radios',`${fmt(t.radOk)} de ${fmt(t.rad)}`));A.push(anillo(pct(t.repOk,t.rep),'Repetidoras',`${t.repOk} de ${t.rep}`));}
   if(!oc.includes('elementos'))A.push(anillo(pct(t.elemOk,t.elem),'Elementos TIC',`${fmt(t.elemOk)} de ${fmt(t.elem)}`));
-  return`<div class="anillos">${A.join('')}</div>
-  <div class="cols" style="grid-template-columns:1fr 1fr;height:calc(100% - 200px)">
+  // Proyectos implementados y sus valores (se calculan desde los proyectos de inversión)
+  const proys=[{tk:'res_proy_cam',def:'Cámaras — Subsistema CCTV',v:proyTotal('proyectoCamaras')},
+    {tk:'res_proy_rad',def:'Radios — Subsistema de radio',v:proyTotal('proyectoRadios')}].filter(p=>p.v>0);
+  const totInv=proys.reduce((s,p)=>s+p.v,0);
+  const proyBox=`<div class="caja">${H3('h3_resproy','Proyectos de inversión')}
+   <ul class="lista rp-lista">${proys.map(p=>`<li><span class="rp-n">${ET(p.tk,p.def)}</span><span class="rp-v">$ ${fmt(p.v)}</span></li>`).join('')||'<li>Sin proyectos registrados</li>'}</ul>
+   ${proys.length?`<div class="rp-total"><span>${ET('res_proy_tot','Inversión total')}</span><b>$ ${fmt(totInv)}</b></div>`:''}</div>`;
+  return`<div class="res-wrap"><div class="anillos">${A.join('')}</div>
+  <div class="cols" style="grid-template-columns:1fr 1fr 1fr">
    <div class="caja">${H3('h3_resnec','Necesidades priorizadas')}<ul class="lista">${(D.meta.necesidades||[]).map(n=>`<li>${esc(n)}</li>`).join('')||'<li>Sin registrar</li>'}</ul></div>
-   <div class="caja">${H3('h3_resfal','Mayor número de fallas')}${barrasSimple(fallas.map(f=>[f.n,f.v]),0,()=>'c-bad')}</div></div>`}
+   <div class="caja">${H3('h3_resfal','Mayor número de fallas')}${barrasSimple(fallas.map(f=>[f.n,f.v]),0,()=>'c-bad')}</div>
+   ${proyBox}</div></div>`}
 
 /* ---------- Perfil ---------- */
 const SECC_DEF={perfil:'Perfil',procesos:'Procesos que lidera',actividades:'Actividades desarrolladas',formacion:'Formación',logros:'Logros'};
@@ -1701,9 +1862,19 @@ function irSec(d){if(S[actual]&&LIGADAS.includes(S[actual].key)){shakeVolver();r
   let i=actual+d;while(i>=0&&i<S.length&&LIGADAS.includes(S[i].key))i+=d;if(i<0||i>=S.length)return;ir(i)}
 $('#ant').onclick=()=>irSec(-1);$('#sig').onclick=()=>irSec(1);
 $('#btnAddSlide').onclick=agregarSlide;$('#btnDelSlide').onclick=eliminarSlide;
+$('#btnVisib').onclick=gestorDiapos;
+document.addEventListener('click',e=>{const vb=e.target.closest&&e.target.closest('[data-visib]');if(!vb)return;
+  const k=vb.dataset.visib,oc=(D.meta.ocultas||[]).slice(),i=oc.indexOf(k);
+  if(i>=0)oc.splice(i,1);else oc.push(k);D.meta.ocultas=oc;
+  guardar(i>=0?'Diapositiva visible':'Diapositiva oculta');render();gestorDiapos()});
 function pantalla(){try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}}
 $('#btnPantalla').onclick=pantalla;$('#btnImprimir').onclick=()=>print();
-document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable)return;
+document.addEventListener('keydown',e=>{
+  // Desbloquear edición en una copia exportada (NO en las protegidas con contraseña): Ctrl+Alt+E
+  if(e.ctrlKey&&e.altKey&&(e.code==='KeyE'||(e.key||'').toLowerCase()==='e')){
+    if(!PROT&&document.body.classList.contains('exportado')){e.preventDefault();document.body.classList.remove('exportado');if(!document.body.classList.contains('admin'))$('#btnAdmin').click();toast('Edición habilitada en esta copia')}
+    return}
+  if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable)return;
   if($('#velo').classList.contains('abierto')){if(e.key==='Escape')cerrar();return}
   if($('#perfilVelo').classList.contains('abierto')){if(e.key==='Escape')cerrarPerfil();return}
   if($('#mapaVelo')&&$('#mapaVelo').classList.contains('abierto')){if(e.key==='Escape')cerrarMapa();return}
@@ -1716,7 +1887,7 @@ document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target
   if(e.key==='t'||e.key==='T')sigEstilo()});
 
 /* ---------- Edición de celdas ---------- */
-function celdas(){const on=document.body.classList.contains('admin');document.querySelectorAll('td[data-edit]').forEach(td=>td.contentEditable=on);document.querySelectorAll('[data-tit],[data-sub]').forEach(el=>el.contentEditable=on);document.querySelectorAll('.cap-items .it-txt').forEach(el=>el.contentEditable=on);document.querySelectorAll('.cap-head [data-captit]').forEach(el=>el.contentEditable=on);document.querySelectorAll('[data-txt]').forEach(el=>el.contentEditable=on);document.querySelectorAll('.cd-num').forEach(el=>el.contentEditable=on);document.querySelectorAll('.ct-ced').forEach(el=>el.contentEditable=on)}
+function celdas(){const on=document.body.classList.contains('admin');document.querySelectorAll('td[data-edit]').forEach(td=>td.contentEditable=on);document.querySelectorAll('[data-tit],[data-sub]').forEach(el=>el.contentEditable=on);document.querySelectorAll('.cap-items .it-txt').forEach(el=>el.contentEditable=on);document.querySelectorAll('.cap-head [data-captit]').forEach(el=>el.contentEditable=on);document.querySelectorAll('[data-txt]').forEach(el=>el.contentEditable=on);document.querySelectorAll('.cd-num').forEach(el=>el.contentEditable=on);document.querySelectorAll('.ct-ced').forEach(el=>el.contentEditable=on);document.querySelectorAll('[data-pcat]').forEach(el=>el.contentEditable=on)}
 document.addEventListener('click',e=>{const r=e.target.closest&&e.target.closest('.cdist-r');if(!r)return;if(document.body.classList.contains('admin')&&e.target.closest('.cd-num,[data-txt]'))return;filtrarCanal(r.dataset.cfiltro)});
 document.addEventListener('click',e=>{
   const c=e.target.closest&&e.target.closest('.ind-card');if(c){selIndicador(+c.dataset.ii);return}
@@ -1756,6 +1927,17 @@ document.addEventListener('change',e=>{const el=e.target.closest&&e.target.close
   if(k==='n'){const v=el.value.trim();if(v)D.canales[i].n=num(v);else delete D.canales[i].n}else D.canales[i][k]=el.value;guardar('Unidad actualizada');render()});
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('[data-addcanal]');if(a){D.canales=D.canales||[];D.canales.push({u:'Nueva unidad',c:'ded',mun:MAPAC.muni[0].n});guardar('Unidad agregada');return render()}
   const d=e.target.closest&&e.target.closest('[data-delcanal]');if(d){D.canales.splice(+d.dataset.delcanal,1);guardar('Unidad eliminada');render()}});
+document.addEventListener('click',e=>{
+  const pad=e.target.closest&&e.target.closest('[data-pcatadd]');if(pad){agregarCatPDA();return}
+  const pde=e.target.closest&&e.target.closest('[data-pcatdel]');if(pde){quitarCatPDA(pde.dataset.pcatdel);return}
+  const pfl=e.target.closest&&e.target.closest('[data-pcatflt]');if(pfl){if(document.body.classList.contains('admin')&&e.target.closest('[data-pcat],[data-txt]'))return;const id=pfl.dataset.pcatflt;pdaCatFiltro=(pdaCatFiltro===id?'':id);render();return}
+  const loc=e.target.closest&&e.target.closest('[data-ploc]');if(loc){e.stopPropagation();selPDA(+loc.dataset.ploc);return}
+  const vt=e.target.closest&&e.target.closest('[data-vertodo]');if(vt){pdaSel=-1;aplicarPDA();return}
+  const mm=e.target.closest&&e.target.closest('.mini-mapa.placing');if(mm){ubicarPin(mm,e);return}
+  const row=e.target.closest&&e.target.closest('tr[data-prow]');
+  if(row&&!(e.target.closest('[data-edit]')||e.target.closest('select')||e.target.closest('button'))){selPDA(+row.dataset.prow)}});
+document.addEventListener('change',e=>{const s=e.target.closest&&e.target.closest('[data-ptipo]');if(s)setTipoPDA(+s.dataset.ptipo,s.value)});
+document.addEventListener('focusout',e=>{const el=e.target.closest&&e.target.closest('[data-pcat]');if(!el||!document.body.classList.contains('admin'))return;const c=catById(el.dataset.pcat),v=el.innerText.trim();if(!c){return}if(!v){el.textContent=c.nombre;return}if(c.nombre===v)return;c.nombre=v;guardar('Unidad renombrada')});
 document.addEventListener('mouseover',e=>{const c=e.target.closest&&e.target.closest('.serv-card');if(c)activarServ(c.dataset.serv)});
 document.addEventListener('mouseout',e=>{if(document.body.classList.contains('admin'))return;const w=e.target.closest&&e.target.closest('.serv-wrap');if(!w)return;const to=e.relatedTarget;if(to&&w.contains&&w.contains(to))return;limpiarServ()});
 document.addEventListener('focusout',e=>{const b=e.target.closest&&e.target.closest('.pda-badge');if(!b||!document.body.classList.contains('admin'))return;
@@ -1794,7 +1976,7 @@ document.addEventListener('click',e=>{const t=e.target;
   const vc=t.closest('[data-volvercap]');if(vc){if(document.body.classList.contains('admin')&&t.closest('[data-txt]'))return;const i=S.findIndex(x=>x.key==='capacidades');if(i>=0)ir(i);return}
   const cc=t.closest('.cap-card,.cap-media');if(cc){if(!document.body.classList.contains('admin')){const i=S.findIndex(x=>x.key===cc.dataset.cap);if(i>=0)ir(i)}return}
   const card=t.closest('.card,.pcard');if(card)return perfil(card.dataset.id);
-  const af=t.closest('[data-addfila]');if(af){const k=af.dataset.addfila,o={};ESQ[k].forEach(c=>o[c[0]]=c[2]==='n'?0:c[2]==='e'?'Operativo':'—');D.inventario[k].push(o);guardar('Fila agregada');return render()}
+  const af=t.closest('[data-addfila]');if(af){const k=af.dataset.addfila,o={};ESQ[k].forEach(c=>o[c[0]]=c[2]==='n'?0:c[2]==='e'?'Operativo':'—');if(k==='pdadisp'&&pdaCatFiltro)o.tipo=pdaCatFiltro;D.inventario[k].push(o);guardar('Fila agregada');return render()}
   const df=t.closest('[data-delfila]');if(df){if(confirmar('¿Eliminar esta fila?')){D.inventario[df.dataset.delfila].splice(+df.dataset.i,1);guardar('Fila eliminada');render()}}});
 function lineaHover(e,on){const n=e.target.closest&&e.target.closest('.cap-card,.cap-media');if(!n)return;const hw=n.closest('.hub-wrap');if(hw)hw.classList.toggle('pausa',on);const l=document.querySelector(`.hub-lineas .conx[data-cap="${n.dataset.cap}"]`);if(l)l.classList.toggle('hot',on)}
 document.addEventListener('mouseover',e=>lineaHover(e,true));document.addEventListener('mouseout',e=>lineaHover(e,false));
@@ -1856,7 +2038,16 @@ $('#btnAdmin').onclick=()=>{const on=document.body.classList.toggle('admin');$('
 function bajar(n,c,t){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:t}));a.download=n;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 $('#btnExportJson').onclick=()=>bajar('datos_grupo_tic_deces.json',JSON.stringify({...D,meta:{...D.meta,guardado:new Date().toISOString()}},null,2),'application/json');
 $('#btnImportJson').onclick=()=>$('#archivoJson').click();
-$('#archivoJson').onchange=e=>{const f=e.target.files[0];if(!f)return;f.text().then(x=>{try{const n=JSON.parse(x);if(!n.personal||!n.inventario)throw 0;D=n;guardar('Datos cargados');render()}catch(_){toast('Archivo no válido')}});e.target.value=''};
+function cargarRespaldo(f){if(!f)return;f.text().then(x=>{
+  let n;try{n=JSON.parse(x)}catch(_){toast('No se pudo leer: el archivo no es un JSON válido');return}
+  if(!n||typeof n!=='object'){toast('No se pudo leer: el archivo no es un JSON válido');return}
+  if(!n.personal||!n.inventario){toast('Ese JSON no es un respaldo de esta presentación (faltan los datos)');return}
+  if(!confirmar('Se reemplazará el contenido actual por el del respaldo. ¿Continuar?'))return;
+  n.meta=n.meta||{};n.meta.propio=true;D=n;guardar('Respaldo cargado correctamente');render();
+}).catch(()=>toast('No se pudo leer el archivo'))}
+$('#archivoJson').onchange=e=>{cargarRespaldo(e.target.files[0]);e.target.value=''};
+$('#btnRespaldo').onclick=()=>$('#archivoResp').click();
+$('#archivoResp').onchange=e=>{cargarRespaldo(e.target.files[0]);e.target.value=''};
 $('#btnRestaurar').onclick=()=>{if(confirmar('Se perderán los cambios de este navegador. ¿Continuar?')){try{localStorage.removeItem(CLAVE)}catch(e){}D=JSON.parse(ORIGINAL);render();toast('Ejemplo restaurado')}};
 $('#btnExportHtml').onclick=()=>{bajar('presentacion_grupo_tic_deces.html',docExport(JSON.stringify({...D,meta:{...D.meta,ejemplo:false,guardado:new Date().toISOString()}})),'text/html');toast('Presentación exportada')};
 
@@ -1912,7 +2103,21 @@ $('#btnProteger').onclick=()=>{const hoy=new Date().toISOString().slice(0,10);ab
       const nom='presentacion_grupo_tic_protegida'+(o.destinatario?'_'+o.destinatario.normalize('NFD').replace(/[^\w]+/g,'_').toLowerCase():'')+'.html';
       bajar(nom,docExport(JSON.stringify(env)),'text/html');cerrar();toast('Archivo protegido generado')}catch(err){toast('No se pudo cifrar en este navegador')}}};
 
-if(RAW.cifrado)abrirProtegida();else{aplicarFx();escalar();render()}
+/* ---------- Datos publicados (GitHub Pages u otro hosting) ----------
+   Si junto al index.html hay un archivo datos.json (el mismo "Respaldo JSON"
+   que exporta el administrador), la presentación lo toma automáticamente cuando
+   es más reciente que lo que ya se muestra. Así, para actualizar los datos de
+   TODOS los equipos basta con subir un datos.json nuevo al repositorio. */
+function cargarRemoto(){
+  if(location.protocol==='file:')return; // en local (file://) no aplica, solo en hosting
+  fetch('datos.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(R=>{
+    if(!R||typeof R!=='object'||!R.personal||!R.inventario)return;
+    const rr=(R.meta&&R.meta.guardado)||'', ll=(D.meta&&D.meta.guardado)||'';
+    // El JSON publicado gana solo si es más reciente que lo mostrado (ejemplo o edición local)
+    if(rr && rr>ll){R.meta=R.meta||{};D=R;render();toast('Datos actualizados desde el servidor')}
+  }).catch(()=>{});
+}
+if(RAW.cifrado)abrirProtegida();else{aplicarFx();escalar();render();cargarRemoto()}
 })();
 </script>
 </body>

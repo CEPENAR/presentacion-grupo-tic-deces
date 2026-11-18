@@ -6,7 +6,7 @@
     "unidad": "Departamento de Policía Cesar – DECES",
     "evento": "Presentación ante el señor Comandante de Departamento",
     "lugar": "Valledupar, Cesar",
-    "fechaCorte": "2026-11-17",
+    "fechaCorte": "2026-11-18",
     "ejemplo": false,
     "necesidades": [
       "Implementación de un Sistema de Emergencia y Seguridad Departamental",
@@ -16,7 +16,7 @@
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
       "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-17T15:23:38.984Z",
+    "guardado": "2026-11-18T14:41:01.741Z",
     "titulos": {
       "personal": {
         "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
@@ -75,7 +75,10 @@
       "cam_h_a": "IVA",
       "rad_btn_gest": "Gestiones",
       "rad_btn_cam": "Proyecto radios",
-      "h5_bio": "Captores biométricos — PDA nuevas por municipio"
+      "h5_bio": "Captores biométricos — PDA nuevas por municipio",
+      "consol_total_pdadisp": "TOTAL GENERAL",
+      "serv_t_pda": "Asistente Digital Personal — PDA",
+      "pda_cuadro_add": "Agregar unidad"
     },
     "custom": {},
     "orden": [
@@ -92,7 +95,49 @@
       "conectividad"
     ],
     "botonesOcultos": [],
-    "propio": true
+    "propio": true,
+    "pdaCats": [
+      {
+        "id": "est",
+        "nombre": "Estaciones",
+        "sing": "Estación",
+        "geo": false,
+        "fija": true
+      },
+      {
+        "id": "sub",
+        "nombre": "Subestaciones",
+        "sing": "Subestación",
+        "geo": true,
+        "fija": true
+      },
+      {
+        "id": "cai",
+        "nombre": "CAI",
+        "sing": "CAI",
+        "geo": true,
+        "fija": true
+      },
+      {
+        "id": "cmd",
+        "nombre": "Comandantes",
+        "sing": "Comandante",
+        "geo": false,
+        "fija": true
+      },
+      {
+        "id": "cat_mwm7r6jh",
+        "nombre": "GOES",
+        "sing": "GOES",
+        "geo": true
+      },
+      {
+        "id": "cat_mwm7x3m4",
+        "nombre": "Seguridad Física DECES",
+        "sing": "Seguridad Física DECES",
+        "geo": true
+      }
+    ]
   },
   "personal": [
     {
@@ -987,11 +1032,7 @@
       },
       {
         "sitio": "Estación Gamarra",
-        "disp": 4
-      },
-      {
-        "sitio": "Subestación Puerto Mosquito",
-        "disp": 2
+        "disp": 6
       },
       {
         "sitio": "Estación La Gloria",
@@ -1086,8 +1127,74 @@
         "disp": 6
       },
       {
-        "sitio": "Valledupar",
-        "disp": 16
+        "sitio": "CAI José María Campo Serrano – Aguachica",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "CAI San Pedro – Aguachica",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía La Jagua",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía Becerril",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía El Copey",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía Pailitas",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía Pelaya",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía Bosconia",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía San Martin",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía San Alberto",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Estación de Policía Curumani",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Comandante Subestación de Policía La Loma",
+        "disp": 1,
+        "tipo": "cmd"
+      },
+      {
+        "sitio": "Grupo de Operaciones Especiales DECES",
+        "disp": 3,
+        "tipo": "cat_mwm7r6jh"
+      },
+      {
+        "sitio": "Grupo Seguridad Física e Instalaciones DECES",
+        "disp": 1,
+        "tipo": "cat_mwm7x3m4"
       }
     ],
     "biodisp": [
