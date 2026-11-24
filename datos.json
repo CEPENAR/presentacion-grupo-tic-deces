@@ -1,12 +1,12 @@
 {
   "meta": {
-    "titulo": "DEPARTAMENTO DE POLICÍA CESAR",
-    "subtitulo": "Grupo de Tecnologías de la Información y las Comunicaciones",
+    "titulo": "Grupo de Tecnologías \nde la Información y las Comunicaciones",
+    "subtitulo": "",
     "sigla": "DECES",
-    "unidad": "Departamento de Policía Cesar – DECES",
+    "unidad": "DEPARTAMENTO DE POLICÍA CESAR",
     "evento": "Presentación ante el señor Comandante de Departamento",
     "lugar": "Valledupar, Cesar",
-    "fechaCorte": "2026-11-18",
+    "fechaCorte": "2026-11-24",
     "ejemplo": false,
     "necesidades": [
       "Implementación de un Sistema de Emergencia y Seguridad Departamental",
@@ -16,7 +16,7 @@
       "Adquisición de UPS para cuartos de comunicaciones de estaciones",
       "Adquisición de destructoras de papel para las dependencias del Departamento de Policía Cesar como herramienta de seguridad de la información clasificada en la institución"
     ],
-    "guardado": "2026-11-18T14:41:01.741Z",
+    "guardado": "2026-11-24T16:58:33.590Z",
     "titulos": {
       "personal": {
         "sub": "01 Oficial  ·  04 Mandos del Nivel Ejecutivo  ·  02 Patrulleros",
@@ -78,7 +78,9 @@
       "h5_bio": "Captores biométricos — PDA nuevas por municipio",
       "consol_total_pdadisp": "TOTAL GENERAL",
       "serv_t_pda": "Asistente Digital Personal — PDA",
-      "pda_cuadro_add": "Agregar unidad"
+      "pda_cuadro_add": "Agregar unidad",
+      "contacto": "Teniente, Ivanock Socarras Córdoba\nJefe Grupo de Tecnologías de la Información y las Comunicaciones DECES\ndeces.gutic@policia.gov.co.\nTeléfono: 320 - 300 - 08 19\nwww.policia.gov.co.",
+      "gracias": "¡Gracias!"
     },
     "custom": {},
     "orden": [
@@ -137,7 +139,8 @@
         "sing": "Seguridad Física DECES",
         "geo": true
       }
-    ]
+    ],
+    "tituloSize": ""
   },
   "personal": [
     {
